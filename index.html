@@ -129,7 +129,7 @@
             border-bottom: 1px solid #eee;
         }
 
-        /* Removed internal scrolling for a cleaner look */
+        /* Queue container styles for modernization */
         .queue-container {
             display: flex;
             flex-direction: column;
@@ -301,7 +301,7 @@
             border-radius: 3px;
             overflow: hidden;
             margin-top: 8px;
-            grid-column: 1 / -1; /* Full width under job details */
+            grid-column: 1 / -1; 
         }
 
         .progress-fill {
@@ -316,7 +316,7 @@
             font-weight: 500;
             color: #666;
             margin-top: 4px;
-            grid-column: 1 / -1; /* Full width under progress bar */
+            grid-column: 1 / -1; 
             padding-top: 10px;
             border-top: 1px dashed #e0e0e0;
         }
@@ -339,8 +339,6 @@
             display: block;
         }
         
-        /* Modal styles removed for brevity, they remain unchanged */
-
         .footer {
             margin-top: 48px;
             text-align: center;
@@ -350,10 +348,10 @@
             margin-right: auto;
         }
         
-        /* Updated: Banner sizing and centering */
+        /* Updated: Banner sizing to accommodate 800px image */
         .footer-promo {
             margin: 32px auto 24px auto;
-            max-width: 800px; /* Approximately 75% width of the container */
+            max-width: 800px;
         }
 
         .footer-promo a {
@@ -380,7 +378,7 @@
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin: 0 auto; /* Center the image in the modal */
+            margin: 0 auto;
         }
 
         .btn-donate {
@@ -530,7 +528,7 @@
     </div>
 
     <script>
-        // Updated: Comprehensive format support
+        // Updated: PDF output removed from document to prevent file corruption
         const formatSupport = {
             image: {
                 icon: '🖼️',
@@ -539,9 +537,8 @@
             },
             document: {
                 icon: '📄',
-                // ADDED 'pdf' to input list
                 input: ['txt', 'md', 'html', 'htm', 'json', 'csv', 'xml', 'rtf', 'docx', 'doc', 'rst', 'epub', 'odt', 'docbook', 'tsv', 'pdf'],
-                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf', 'pdf']
+                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf'] // PDF OUTPUT REMOVED
             },
             audio: {
                 icon: '🎵',
@@ -849,14 +846,13 @@
         }
 
         async function convertDocument(file, targetFormat, sourceExt) {
-            // Check for complex and currently unsupported conversions first
-            if (['docx', 'doc', 'odt', 'epub'].includes(sourceExt)) {
-                 throw new Error(`Conversion for .${sourceExt} to .${targetFormat} requires a server or a complex library.`);
+            // FIX: Immediately stop PDF input to prevent browser freeze
+            if (sourceExt === 'pdf') {
+                 throw new Error(`PDF parsing is not supported for client-side conversion without a specialized library (e.g., pdf.js).`);
             }
             
-            // Explicit check for PDF input (as requested by user)
-            if (sourceExt === 'pdf') {
-                 throw new Error(`PDF conversion requires a specialized client-side library (e.g., pdf.js for text extraction) which is not currently implemented.`);
+            if (['docx', 'doc', 'odt', 'epub'].includes(sourceExt)) {
+                 throw new Error(`Conversion for .${sourceExt} to .${targetFormat} requires a server or a complex library.`);
             }
             
             const text = await file.text();
@@ -946,7 +942,6 @@
         }
         
         function audioBufferToWav(buffer) {
-            // ... (WAV encoding logic remains the same) ...
             const length = buffer.length * buffer.numberOfChannels * 2 + 44;
             const arrayBuffer = new ArrayBuffer(length);
             const view = new DataView(arrayBuffer);
