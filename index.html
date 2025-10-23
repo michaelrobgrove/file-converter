@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alatsi&display=swap" rel="stylesheet">
     
     <style>
-        /* NEW: Define Agrandir (using Alatsi as the body font, and a strong sans-serif fallback for Agrandir titles) */
+        /* NEW: Define Agrandir (using a bold sans-serif fallback for Agrandir titles) */
         @font-face {
             font-family: 'Agrandir';
             src: local('Helvetica Bold'), local('Arial Black'), sans-serif;
@@ -39,7 +39,7 @@
         }
 
         body {
-            /* PARALLAX EFFECT: Use the new image as background, fixed attachment */
+            /* PARALLAX EFFECT */
             font-family: 'Alatsi', sans-serif;
             background-color: #1a1a1a;
             background-image: url('DSGN_grey_back.jpg'); 
@@ -50,12 +50,12 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: #eee; /* Light text color for the footer/body */
+            color: #eee;
         }
 
-        /* --- Navigation Styles --- */
+        /* --- Navigation Styles (High Contrast White) --- */
         .nav-bar {
-            background: rgba(255, 255, 255, 0.98); /* Near opaque white */
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(8px);
             border-radius: 12px;
             padding: 10px 20px;
@@ -69,8 +69,14 @@
             justify-content: center;
         }
 
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
         .nav-link a {
-            color: #333; /* Darker link color */
+            color: #333;
             text-decoration: none;
             font-weight: 600;
             padding: 5px 0;
@@ -83,7 +89,7 @@
             border-bottom: 2px solid #667eea;
         }
         
-        /* Containers should be lighter against the dark background */
+        /* --- Main Content Container (White/Light Contrast) --- */
         .container {
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(8px);
@@ -96,33 +102,41 @@
             animation: fadeIn 0.6s ease-out;
         }
         
+        /* --- Title Area (Using Logo and Tagline) --- */
         h1 {
-            font-family: 'Agrandir', sans-serif; /* Use Agrandir for main title */
+            font-family: 'Agrandir', sans-serif;
             font-size: 3rem;
-            /* Reverting text color to dark for contrast against white container */
-            background: linear-gradient(135deg, #1c1c1c 0%, #333 100%); 
+            /* Using dark colors for high contrast against white container background */
+            background: linear-gradient(135deg, #222 0%, #000 100%); 
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 12px;
+            margin-bottom: 5px;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            text-transform: uppercase;
+        }
+        
+        /* Custom size for the logo image */
+        h1 img {
+             height: 40px; 
         }
 
         .tagline {
             font-family: 'Alatsi', sans-serif;
             text-align: center;
-            color: #4a5568; /* Dark color for readability on white background */
+            color: #4a5568; 
             margin-bottom: 24px;
             font-size: 1.2rem;
             font-weight: 600;
         }
 
+        /* --- Input/Queue Styles --- */
         .info-box {
-            background: #f8f8f8; /* Light gray background for info box */
+            background: #f8f8f8;
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 32px;
@@ -131,9 +145,18 @@
             line-height: 1.6;
             border: 1px solid #ddd;
         }
+
+        .privacy-badge {
+            background: #28a745;
+        }
+
+        .upload-zone {
+            border: 2px dashed #667eea;
+            background: #fff;
+        }
         
-        /* Ensure all internal container text is dark for contrast */
-        .upload-text, .queue-header, .job-file-meta h4 {
+        /* Ensure all text elements are dark on the white background */
+        .upload-text, .queue-header, .job-file-meta h4, .seo-content {
             color: #333; 
         }
 
@@ -142,18 +165,18 @@
         }
 
         .job-card {
-            background: #fff; /* White background for job cards */
+            background: #fff;
             border: 1px solid #e0e0e0;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .job-card.complete {
             border-color: #28a745;
-            background: #e6ffed; /* Very light green for complete */
+            background: #e6ffed;
         }
         
+        /* --- Footer & SEO Content (Floating on dark background) --- */
         .footer {
-            /* Footer text is now light against the parallax background */
             color: #eee; 
             margin-top: 48px;
             text-align: center;
@@ -179,30 +202,34 @@
         }
 
         .seo-content {
-            background: rgba(255, 255, 255, 0.98); /* White background for SEO text block */
+            background: rgba(255, 255, 255, 0.98);
             color: #333;
-            /* ... rest of the styling remains ... */
+            line-height: 1.8;
+            font-family: 'Alatsi', sans-serif;
         }
         
         /* Adjusting colors for SEO section titles */
-        .seo-content h2 {
+        .seo-content h2, .seo-content h3 {
             font-family: 'Agrandir', sans-serif;
+            color: #333; /* Dark headers for contrast */
+        }
+        
+        .seo-content h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .seo-content a {
             color: #667eea;
         }
 
-        .seo-content h3 {
-            font-family: 'Agrandir', sans-serif;
-            color: #764ba2;
-        }
-
         /* Responsive adjustments */
-        @media (max-width: 640px) {
-            .container {
-                padding: 32px 24px;
-            }
-
+        @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+            h1 img {
+                 height: 30px; 
             }
         }
     </style>
@@ -217,14 +244,13 @@
     </nav>
     
     <div class="container">
-        <!-- Replaced H1 with the new DSGN Labs branding structure -->
+        <!-- New Logo/Title Structure -->
         <h1>
-            <!-- Ensure DSGN.png is uploaded to the root -->
             <img src="/DSGN.png" alt="DSGN Labs Logo" style="height: 40px; margin-right: 5px;">
             DSGN Labs
         </h1>
         
-        <!-- Updated Tagline using the chosen phrase -->
+        <!-- Updated Tagline -->
         <p class="tagline">Design. Develop. Deploy. Free.</p>
         
         <div class="info-box">
