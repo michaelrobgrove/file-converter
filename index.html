@@ -7,564 +7,31 @@
     <meta name="description" content="DSGN Labs: Free online file converter supporting 100+ formats. Convert images (JPG, PNG, WebP), documents (PDF, DOCX), audio (MP3, WAV), and video files instantly. No registration, complete privacy, unlimited conversions.">
     <meta name="keywords" content="file converter, free converter, online converter, image converter, pdf converter, audio converter, video converter, document converter, DSGN Labs, yourdsgn.pro">
     
-    <!-- Open Graph / Social Media -->
     <meta property="og:title" content="DSGN Labs - Free Tools for Professionals">
     <meta property="og:description" content="DSGN Labs: Convert images, documents, audio, and video files instantly. Fast, secure, and completely free.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://convert.yourdsgn.pro">
     
-    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6489624202319026" crossorigin="anonymous"></script>
     
     <link rel="canonical" href="https://convert.yourdsgn.pro">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>">
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        /* --- Navigation Styles --- */
-        .nav-bar {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 10px 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-link a {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 5px 0;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .nav-link a:hover {
-            color: #667eea;
-            border-bottom: 2px solid #667eea;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 48px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto 32px auto;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* Space between logo and text */
-        }
-
-        .tagline {
-            text-align: center;
-            color: #666;
-            margin-bottom: 24px;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .info-box {
-            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 32px;
-            text-align: center;
-            color: #555;
-            line-height: 1.6;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .privacy-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #28a745;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 12px;
-        }
-
-        .upload-zone {
-            border: 2px dashed #667eea;
-            border-radius: 12px;
-            padding: 48px 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
-            margin-bottom: 24px;
-        }
-
-        .upload-zone:hover {
-            border-color: #764ba2;
-            background: linear-gradient(135deg, #e8f0ff 0%, #ede0ff 100%);
-            transform: translateY(-2px);
-        }
-
-        .upload-zone.dragging {
-            border-color: #764ba2;
-            background: linear-gradient(135deg, #e0e8ff 0%, #e5d5ff 100%);
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .upload-text {
-            font-size: 1.2rem;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .upload-subtext {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .queue-header {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .queue-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .job-card {
-            background: rgba(240, 244, 255, 0.9);
-            padding: 20px;
-            border-radius: 16px;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-            display: grid;
-            grid-template-columns: 1fr 180px 150px;
-            gap: 20px;
-            align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .job-card.complete {
-            border-color: #28a745;
-            background: #d4edda;
-        }
-
-        .job-details {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .job-file-meta h4 {
-            font-size: 1.1rem;
-            color: #333;
-            margin: 0 0 4px 0;
-            font-weight: 600;
-        }
-
-        .job-file-meta p {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
-        }
-
-        .format-selector {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .format-selector label {
-            color: #555;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .format-dropdown {
-            padding: 10px;
-            border-radius: 8px;
-            border: 2px solid #ccc;
-            background: white;
-            font-size: 0.9rem;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 600;
-        }
-
-        .format-dropdown:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-        }
-
-        .job-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .btn-small {
-            padding: 10px 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-        }
-
-        .btn-download-single {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-download-single:hover {
-            background: #218838;
-            transform: translateY(-1px);
-        }
-
-        .btn-remove-job {
-            background: #dc3545;
-            color: white;
-        }
-
-        .btn-remove-job:hover {
-            background: #c82333;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-primary:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-            margin-top: 12px;
-        }
-
-        .btn-secondary:hover {
-            background: #f0f4ff;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: #e0e0e0;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-            grid-column: 1 / -1;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .job-status {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #666;
-            margin-top: 4px;
-            grid-column: 1 / -1;
-            padding-top: 10px;
-            border-top: 1px dashed #e0e0e0;
-        }
-
-        .job-status.error { color: #e74c3c; }
-        .job-status.complete { color: #28a745; }
-        .job-status.converting { color: #667eea; }
-
-        .error {
-            display: none;
-            background: #fee;
-            padding: 16px;
-            border-radius: 12px;
-            border-left: 4px solid #e74c3c;
-            color: #e74c3c;
-            margin-top: 16px;
-        }
-
-        .error.show {
-            display: block;
-        }
-
-        .seo-content {
-            background: white;
-            padding: 48px;
-            border-radius: 24px;
-            max-width: 1200px;
-            margin: 0 auto 32px auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            line-height: 1.8;
-            color: #333;
-        }
-
-        .seo-content h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin: 32px 0 16px 0;
-        }
-
-        .seo-content h3 {
-            color: #764ba2;
-            font-size: 1.5rem;
-            margin: 24px 0 12px 0;
-        }
-
-        .seo-content p {
-            margin-bottom: 16px;
-        }
-
-        .seo-content ul, .seo-content ol {
-            margin: 16px 0 16px 32px;
-        }
-
-        .seo-content li {
-            margin-bottom: 8px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
-            padding: 24px;
-            border-radius: 12px;
-            border: 2px solid rgba(102, 126, 234, 0.2);
-        }
-
-        .feature-card h4 {
-            color: #667eea;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-        }
-
-        .ad-space {
-            text-align: center;
-            margin: 32px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            max-width: 1200px;
-        }
-
-        .footer {
-            margin-top: 48px;
-            text-align: center;
-            max-width: 1200px;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .footer-promo {
-            margin: 32px auto 24px auto;
-            max-width: 800px;
-        }
-
-        .footer-promo a {
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .footer-promo a:hover {
-            transform: scale(1.02);
-        }
-
-        .footer-promo img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-donate {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 12px 32px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-donate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(245, 87, 108, 0.4);
-        }
-
-        .copyright {
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .copyright a {
-            color: white;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-            transition: border-color 0.3s ease;
-        }
-
-        .copyright a:hover {
-            border-color: white;
-        }
-
-        @media (max-width: 768px) {
-            .container, .seo-content {
-                padding: 32px 24px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .job-card {
-                grid-template-columns: 1fr;
-            }
-
-            .job-actions {
-                flex-direction: row;
-            }
-
-            .seo-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .seo-content h3 {
-                font-size: 1.2rem;
-            }
-
-            .nav-links {
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-
-            .nav-link a {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="dsgn-style.css">
+    
 </head>
 <body>
     <nav class="nav-bar">
         <ul class="nav-links">
-            <li class="nav-link"><a href="https://yourdsgn.pro/" target="_blank">DSGN Link (URL Shortener)</a></li>
-            <li class="nav-link"><a href="https://alfredwebdesign.com/" target="_blank">Website Design</a></li>
-            <li class="nav-link"><a href="https://www.alfredwebdesign.com/#apparel" target="_blank">Apparel Printing</a></li>
+            <li class="nav-link"><a href="https://yourdsgn.pro/" target="_blank">Free URL Shortener</a></li>
+            <li class="nav-link"><a href="https://alfredwebdesign.com/" target="_blank">Low Cost Website Design</a></li>
+            <li class="nav-link"><a href="https://www.alfredwebdesign.com/apparel" target="_blank">Apparel Printing</a></li>
         </ul>
     </nav>
     
     <div class="container">
-        <!-- Replaced H1 with the new DSGN Labs branding structure -->
         <h1>
-            <!-- Using the new PNG logo image you provided -->
-            <img src="/DSGN.png" alt="DSGN Labs Logo" style="height: 200px; margin-right: 5px;">
+            <img src="./DSGN.png" alt="DSGN Labs Logo" style="height: 160px; margin-right: 5px;">
         </h1>
         <div class="info-box">
             <p><strong>Your Privacy is Our Priority:</strong> Simple conversions happen instantly in your browser. Complex formats use our secure processing system. Either way, your files are never stored and are automatically deleted after conversion.</p>
@@ -598,8 +65,20 @@
             </button>
         </div>
     </div>
+    <div class="footer-promo">
+        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank">
+            <img src="./donate-convert.jpg" alt="Support DSGN Labs - Free file converter">
+        </a>
+    </div>
 
-    <!-- Ad Space -->
+    <div class="footer">
+        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank" class="btn-donate">☕ Support DSGN Labs</a>
+        
+        <div class="footer-promo">
+            <a href="https://go.yourdsgn.pro/alfredweb" target="_blank">
+                <img src="./banner.jpg" alt="Alfred Web Design - Professional websites and custom apparel">
+            </a>
+        </div>
     <div class="ad-space">
         <ins class="adsbygoogle"
              style="display:block"
@@ -612,7 +91,6 @@
         </script>
     </div>
 
-    <!-- SEO Content Section - Restored and Branded -->
     <div class="seo-content">
         <h2>The Ultimate Free File Converter by DSGN Labs: Transform Any File Format Instantly</h2>
         
@@ -861,21 +339,6 @@
             <strong>Ready to convert? Scroll up and upload your files now!</strong>
         </p>
     </div>
-
-    <div class="footer-promo">
-        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank">
-            <img src="/donate-convert.jpg" alt="Support DSGN Labs - Free file converter">
-        </a>
-    </div>
-
-    <div class="footer">
-        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank" class="btn-donate">☕ Support DSGN Labs</a>
-        
-        <div class="footer-promo">
-            <a href="https://go.yourdsgn.pro/alfredweb" target="_blank">
-                <img src="/banner.jpg" alt="Alfred Web Design - Professional websites and custom apparel">
-            </a>
-        </div>
         
         <p class="copyright">
             Copyright 2025 <a href="https://www.alfredwebdesign.com" target="_blank">Alfred Web Design & Shirts</a>
