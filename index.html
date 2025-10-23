@@ -19,19 +19,7 @@
     <link rel="canonical" href="https://convert.yourdsgn.pro">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>">
     
-    <!-- NEW: Load Alatsi from Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alatsi&display=swap" rel="stylesheet">
-    
     <style>
-        /* NEW: Define Agrandir (using a bold sans-serif fallback for Agrandir titles) */
-        @font-face {
-            font-family: 'Agrandir';
-            src: local('Helvetica Bold'), local('Arial Black'), sans-serif;
-            font-weight: 700;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -39,28 +27,22 @@
         }
 
         body {
-            /* PARALLAX EFFECT */
-            font-family: 'Alatsi', sans-serif;
-            background-color: #1a1a1a;
-            background-image: url('DSGN_grey_back.jpg'); 
-            background-size: cover;
-            background-attachment: fixed; /* Parallax effect */
-            background-position: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             padding: 20px;
-            color: #eee;
         }
 
-        /* --- Navigation Styles (High Contrast White) --- */
+        /* --- Navigation Styles --- */
         .nav-bar {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 10px 20px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             max-width: 1200px;
             width: 100%;
             margin-left: auto;
@@ -76,7 +58,7 @@
         }
 
         .nav-link a {
-            color: #333;
+            color: #4a5568;
             text-decoration: none;
             font-weight: 600;
             padding: 5px 0;
@@ -88,96 +70,387 @@
             color: #667eea;
             border-bottom: 2px solid #667eea;
         }
-        
-        /* --- Main Content Container (White/Light Contrast) --- */
+
         .container {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 48px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 1200px;
             width: 100%;
             margin: 0 auto 32px auto;
             animation: fadeIn 0.6s ease-out;
         }
-        
-        /* --- Title Area (Using Logo and Tagline) --- */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         h1 {
-            font-family: 'Agrandir', sans-serif;
-            font-size: 3rem;
-            /* Using dark colors for high contrast against white container background */
-            background: linear-gradient(135deg, #222 0%, #000 100%); 
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 12px;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
-            text-transform: uppercase;
-        }
-        
-        /* Custom size for the logo image - FIX: Setting height to 40px */
-        h1 img {
-             height: 40px; 
+            gap: 10px; /* Space between logo and text */
         }
 
         .tagline {
-            font-family: 'Alatsi', sans-serif;
             text-align: center;
-            color: #4a5568; 
+            color: #666;
             margin-bottom: 24px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
 
-        /* --- Input/Queue Styles --- */
         .info-box {
-            background: #f8f8f8;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 32px;
             text-align: center;
-            color: #333;
+            color: #555;
             line-height: 1.6;
-            border: 1px solid #ddd;
+            border: 2px solid rgba(102, 126, 234, 0.2);
         }
 
         .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 12px;
         }
 
         .upload-zone {
             border: 2px dashed #667eea;
-            background: #fff;
-        }
-        
-        /* Ensure all text elements are dark on the white background */
-        .upload-text, .queue-header, .job-file-meta h4, .seo-content {
-            color: #333; 
+            border-radius: 12px;
+            padding: 48px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+            margin-bottom: 24px;
         }
 
-        .upload-subtext, .job-file-meta p, .job-status {
-             color: #666;
+        .upload-zone:hover {
+            border-color: #764ba2;
+            background: linear-gradient(135deg, #e8f0ff 0%, #ede0ff 100%);
+            transform: translateY(-2px);
+        }
+
+        .upload-zone.dragging {
+            border-color: #764ba2;
+            background: linear-gradient(135deg, #e0e8ff 0%, #e5d5ff 100%);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .upload-subtext {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .queue-header {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .queue-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .job-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(240, 244, 255, 0.9);
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            display: grid;
+            grid-template-columns: 1fr 180px 150px;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .job-card.complete {
             border-color: #28a745;
-            background: #e6ffed;
+            background: #d4edda;
         }
-        
-        /* --- Footer & SEO Content (Floating on dark background) --- */
+
+        .job-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .job-file-meta h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin: 0 0 4px 0;
+            font-weight: 600;
+        }
+
+        .job-file-meta p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .format-selector {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .format-selector label {
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .format-dropdown {
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid #ccc;
+            background: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .format-dropdown:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .job-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-download-single {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-download-single:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .btn-remove-job {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-remove-job:hover {
+            background: #c82333;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+            margin-top: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f4ff;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 8px;
+            grid-column: 1 / -1;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .job-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #666;
+            margin-top: 4px;
+            grid-column: 1 / -1;
+            padding-top: 10px;
+            border-top: 1px dashed #e0e0e0;
+        }
+
+        .job-status.error { color: #e74c3c; }
+        .job-status.complete { color: #28a745; }
+        .job-status.converting { color: #667eea; }
+
+        .error {
+            display: none;
+            background: #fee;
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid #e74c3c;
+            color: #e74c3c;
+            margin-top: 16px;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .seo-content {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 1200px;
+            margin: 0 auto 32px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .seo-content h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin: 32px 0 16px 0;
+        }
+
+        .seo-content h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin: 24px 0 12px 0;
+        }
+
+        .seo-content p {
+            margin-bottom: 16px;
+        }
+
+        .seo-content ul, .seo-content ol {
+            margin: 16px 0 16px 32px;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .ad-space {
+            text-align: center;
+            margin: 32px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+        }
+
         .footer {
-            color: #eee; 
             margin-top: 48px;
             text-align: center;
             max-width: 1200px;
@@ -185,51 +458,95 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
-        .copyright {
-            color: #ccc;
+
+        .footer-promo {
+            margin: 32px auto 24px auto;
+            max-width: 800px;
         }
-        
+
+        .footer-promo a {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-promo a:hover {
+            transform: scale(1.02);
+        }
+
+        .footer-promo img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(245, 87, 108, 0.4);
+        }
+
+        .copyright {
+            color: white;
+            font-size: 0.9rem;
+        }
+
         .copyright a {
-            color: #fff;
+            color: white;
             text-decoration: none;
             border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             transition: border-color 0.3s ease;
         }
-        
+
         .copyright a:hover {
-            border-color: #fff;
+            border-color: white;
         }
 
-        .seo-content {
-            background: rgba(255, 255, 255, 0.98);
-            color: #333;
-            line-height: 1.8;
-            font-family: 'Alatsi', sans-serif;
-        }
-        
-        /* Adjusting colors for SEO section titles */
-        .seo-content h2, .seo-content h3 {
-            font-family: 'Agrandir', sans-serif;
-            color: #333; /* Dark headers for contrast */
-        }
-        
-        .seo-content h2 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
-        
-        .seo-content a {
-            color: #667eea;
-        }
-
-        /* Responsive adjustments */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .container, .seo-content {
+                padding: 32px 24px;
             }
-            h1 img {
-                 height: 30px; 
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .job-card {
+                grid-template-columns: 1fr;
+            }
+
+            .job-actions {
+                flex-direction: row;
+            }
+
+            .seo-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .seo-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .nav-link a {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -244,16 +561,11 @@
     </nav>
     
     <div class="container">
-        <!-- New Logo/Title Structure -->
+        <!-- Replaced H1 with the new DSGN Labs branding structure -->
         <h1>
-            <!-- Logo is now correctly sized -->
-            <img src="/DSGN.png" alt="DSGN Labs Logo" style="height: 40px; margin-right: 5px;">
-            DSGN Labs
+            <!-- Using the new PNG logo image you provided -->
+            <img src="/DSGN.png" alt="DSGN Labs Logo" style="height: 200px; margin-right: 5px;">
         </h1>
-        
-        <!-- Updated Tagline -->
-        <p class="tagline">Design. Develop. Deploy. Free.</p>
-        
         <div class="info-box">
             <p><strong>Your Privacy is Our Priority:</strong> Simple conversions happen instantly in your browser. Complex formats use our secure processing system. Either way, your files are never stored and are automatically deleted after conversion.</p>
             <div class="privacy-badge">
@@ -575,10 +887,6 @@
         const SERVER_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
         // Note: The conversion logic now uses a hybrid approach, using the server for complex tasks like PDF, DOCX, and heavy media.
         const USE_SERVER_FOR = ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'odt', 'ods', 'mp4', 'avi', 'mov', 'mkv', 'flv'];
-        
-        // --- UI Stability Control ---
-        // This threshold ensures the UI spinner runs for at least 1.5 seconds, even if conversion is faster.
-        const MIN_CONVERSION_TIME_MS = 1500; 
 
         // Format Support Configuration
         const formatSupport = {
@@ -804,9 +1112,6 @@
             updateJobStatus(job.id, 'converting', 'Processing...');
             updateJobProgress(job.id, 10);
             
-            // Record start time for UI smoothing
-            const startTime = performance.now();
-            
             try {
                 const needsServer = needsServerProcessing(job.sourceExt, job.selectedFormat);
                 
@@ -816,30 +1121,14 @@
                     await convertInBrowser(job);
                 }
                 
-                // --- UI Smoothing Fix ---
-                const endTime = performance.now();
-                const duration = endTime - startTime;
-                
-                // If conversion was too fast, pause to visually confirm 100% progress
-                if (duration < MIN_CONVERSION_TIME_MS) {
-                    updateJobProgress(job.id, 99); // Show nearly complete
-                    await new Promise(resolve => setTimeout(resolve, MIN_CONVERSION_TIME_MS - duration));
-                }
-                // --- End UI Smoothing Fix ---
-
                 updateJobProgress(job.id, 100);
+                // FIX: Added brief delay to ensure UI registers 100% completion before status change
                 await new Promise(resolve => setTimeout(resolve, 300));
                 updateJobStatus(job.id, 'complete', '✓ Conversion successful');
                 
             } catch (err) {
                 updateJobProgress(job.id, 0);
-                
-                // Check if the error indicates a server-side timeout (e.g., from Python)
-                const errorMessage = err.message.includes('timed out') 
-                    ? "✗ Conversion Failed: Server processing timed out (file may be too large)." 
-                    : `✗ Conversion Failed: ${err.message}`;
-                    
-                updateJobStatus(job.id, 'error', errorMessage);
+                updateJobStatus(job.id, 'error', `✗ Conversion Failed: ${err.message}`);
             }
         }
 
@@ -880,10 +1169,10 @@
                 let errorDetails = `Server returned status ${response.status}.`;
                 try {
                     const errorJson = JSON.parse(errorText);
-                    // Extract precise error message from Python backend
+                    // CRITICAL FIX: Extract precise error message from Python backend
                     errorDetails = errorJson.error || errorDetails;
                 } catch {
-                    // Fallback for non-JSON errors (like Cloudflare errors)
+                    // Fallback if response is not JSON (e.g., Cloudflare 500 error)
                     errorDetails = `Network error or server misconfiguration (${response.status}).`;
                 }
                 throw new Error(errorDetails);
