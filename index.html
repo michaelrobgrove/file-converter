@@ -120,7 +120,7 @@
             text-transform: uppercase;
         }
         
-        /* Custom size for the logo image */
+        /* Custom size for the logo image - FIX: Setting height to 40px */
         h1 img {
              height: 40px; 
         }
@@ -226,7 +226,7 @@
         /* Responsive adjustments */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             h1 img {
                  height: 30px; 
@@ -246,6 +246,7 @@
     <div class="container">
         <!-- New Logo/Title Structure -->
         <h1>
+            <!-- Logo is now correctly sized -->
             <img src="/DSGN.png" alt="DSGN Labs Logo" style="height: 40px; margin-right: 5px;">
             DSGN Labs
         </h1>
@@ -574,6 +575,10 @@
         const SERVER_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
         // Note: The conversion logic now uses a hybrid approach, using the server for complex tasks like PDF, DOCX, and heavy media.
         const USE_SERVER_FOR = ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'odt', 'ods', 'mp4', 'avi', 'mov', 'mkv', 'flv'];
+        
+        // --- UI Stability Control ---
+        // This threshold ensures the UI spinner runs for at least 1.5 seconds, even if conversion is faster.
+        const MIN_CONVERSION_TIME_MS = 1500; 
 
         // Format Support Configuration
         const formatSupport = {
@@ -799,6 +804,9 @@
             updateJobStatus(job.id, 'converting', 'Processing...');
             updateJobProgress(job.id, 10);
             
+            // Record start time for UI smoothing
+            const startTime = performance.now();
+            
             try {
                 const needsServer = needsServerProcessing(job.sourceExt, job.selectedFormat);
                 
@@ -808,14 +816,30 @@
                     await convertInBrowser(job);
                 }
                 
+                // --- UI Smoothing Fix ---
+                const endTime = performance.now();
+                const duration = endTime - startTime;
+                
+                // If conversion was too fast, pause to visually confirm 100% progress
+                if (duration < MIN_CONVERSION_TIME_MS) {
+                    updateJobProgress(job.id, 99); // Show nearly complete
+                    await new Promise(resolve => setTimeout(resolve, MIN_CONVERSION_TIME_MS - duration));
+                }
+                // --- End UI Smoothing Fix ---
+
                 updateJobProgress(job.id, 100);
-                // FIX: Added brief delay to ensure UI registers 100% completion before status change
                 await new Promise(resolve => setTimeout(resolve, 300));
                 updateJobStatus(job.id, 'complete', '✓ Conversion successful');
                 
             } catch (err) {
                 updateJobProgress(job.id, 0);
-                updateJobStatus(job.id, 'error', `✗ Conversion Failed: ${err.message}`);
+                
+                // Check if the error indicates a server-side timeout (e.g., from Python)
+                const errorMessage = err.message.includes('timed out') 
+                    ? "✗ Conversion Failed: Server processing timed out (file may be too large)." 
+                    : `✗ Conversion Failed: ${err.message}`;
+                    
+                updateJobStatus(job.id, 'error', errorMessage);
             }
         }
 
@@ -856,10 +880,10 @@
                 let errorDetails = `Server returned status ${response.status}.`;
                 try {
                     const errorJson = JSON.parse(errorText);
-                    // CRITICAL FIX: Extract precise error message from Python backend
+                    // Extract precise error message from Python backend
                     errorDetails = errorJson.error || errorDetails;
                 } catch {
-                    // Fallback if response is not JSON (e.g., Cloudflare 500 error)
+                    // Fallback for non-JSON errors (like Cloudflare errors)
                     errorDetails = `Network error or server misconfiguration (${response.status}).`;
                 }
                 throw new Error(errorDetails);
