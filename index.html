@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free File Converter - convert.yourdsgn.pro | Convert Files Instantly (Server-Side)</title>
-    <meta name="description" content="Free online file converter with 100+ formats. Convert images, documents, audio, video, and more instantly. Powered by Server-Side LibreOffice and FFmpeg for maximum compatibility.">
-    <meta name="keywords" content="file converter, free converter, image converter, pdf converter, audio converter, video converter, document converter, convert files online">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+    <title>Free File Converter - Convert 100+ Formats Online | convert.yourdsgn.pro</title>
+    <meta name="description" content="Free online file converter supporting 100+ formats. Convert images (JPG, PNG, WebP), documents (PDF, DOCX), audio (MP3, WAV), and video files instantly. No registration, complete privacy, unlimited conversions.">
+    <meta name="keywords" content="file converter, free converter, online converter, image converter, pdf converter, audio converter, video converter, document converter, convert files, file conversion, format converter, jpg to png, pdf to word, mp3 converter, video converter, docx to pdf">
     
-    <!-- IMPORTANT: Add JSZip dependency here for 'Download All as ZIP' feature. -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script> -->
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Free File Converter - 100+ Formats Supported">
+    <meta property="og:description" content="Convert images, documents, audio, and video files instantly. Fast, secure, and completely free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://convert.yourdsgn.pro">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6489624202319026" crossorigin="anonymous"></script>
+    
+    <link rel="canonical" href="https://convert.yourdsgn.pro">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>">
     
     <style>
         * {
@@ -27,7 +35,6 @@
             padding: 20px;
         }
 
-        /* --- Navigation Styles --- */
         .nav-bar {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -35,7 +42,7 @@
             padding: 10px 20px;
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -50,7 +57,7 @@
         }
 
         .nav-link a {
-            color: #4a5568; /* Dark gray */
+            color: #4a5568;
             text-decoration: none;
             font-weight: 600;
             padding: 5px 0;
@@ -63,30 +70,15 @@
             border-bottom: 2px solid #667eea;
         }
 
-        @media (max-width: 640px) {
-            .nav-bar {
-                padding: 10px 10px;
-            }
-            .nav-links {
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .nav-link a {
-                font-size: 0.85rem;
-            }
-        }
-        /* --- End Navigation Styles --- */
-
         .container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 48px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
-            margin: 0 auto;
+            margin: 0 auto 32px auto;
             animation: fadeIn 0.6s ease-out;
         }
 
@@ -128,6 +120,19 @@
             color: #555;
             line-height: 1.6;
             border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #28a745;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 12px;
         }
 
         .upload-zone {
@@ -187,18 +192,15 @@
             flex-direction: column;
             gap: 16px;
             margin-bottom: 24px;
-            max-height: unset; 
-            overflow-y: unset; 
-            padding-right: 0; 
         }
 
         .job-card {
             background: rgba(240, 244, 255, 0.9);
             padding: 20px;
-            border-radius: 16px; 
+            border-radius: 16px;
             border: 2px solid rgba(102, 126, 234, 0.2);
             display: grid;
-            grid-template-columns: 1fr 150px 150px;
+            grid-template-columns: 1fr 180px 150px;
             gap: 20px;
             align-items: center;
             transition: all 0.3s ease;
@@ -212,25 +214,15 @@
 
         .job-details {
             display: flex;
-            flex-direction: row;
             align-items: center;
             gap: 15px;
-        }
-
-        .job-file-meta {
-            display: block;
-            min-width: 150px;
         }
 
         .job-file-meta h4 {
             font-size: 1.1rem;
             color: #333;
-            margin: 0;
+            margin: 0 0 4px 0;
             font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
         }
 
         .job-file-meta p {
@@ -238,20 +230,11 @@
             color: #666;
             margin: 0;
         }
-        
-        .job-actions {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            min-width: 150px;
-        }
 
         .format-selector {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
             gap: 5px;
-            min-width: 150px;
         }
 
         .format-selector label {
@@ -261,23 +244,30 @@
         }
 
         .format-dropdown {
-            padding: 8px;
+            padding: 10px;
             border-radius: 8px;
-            border: 1px solid #ccc;
+            border: 2px solid #ccc;
             background: white;
             font-size: 0.9rem;
             cursor: pointer;
             width: 100%;
+            font-weight: 600;
         }
-        
+
         .format-dropdown:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .job-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .btn-small {
-            padding: 8px 12px;
+            padding: 10px 16px;
             border: none;
             border-radius: 8px;
             font-size: 0.85rem;
@@ -285,28 +275,28 @@
             cursor: pointer;
             transition: all 0.2s ease;
             text-transform: uppercase;
-            flex-grow: 1;
         }
 
         .btn-download-single {
             background: #28a745;
             color: white;
         }
-        
+
         .btn-download-single:hover {
             background: #218838;
+            transform: translateY(-1px);
         }
 
         .btn-remove-job {
             background: #dc3545;
             color: white;
         }
-        
+
         .btn-remove-job:hover {
             background: #c82333;
         }
-        
-        .btn-start-conversion, .btn-download-all {
+
+        .btn {
             width: 100%;
             padding: 16px;
             border: none;
@@ -317,7 +307,6 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-top: 12px;
         }
 
         .btn-primary {
@@ -353,7 +342,7 @@
             border-radius: 3px;
             overflow: hidden;
             margin-top: 8px;
-            grid-column: 1 / -1; 
+            grid-column: 1 / -1;
         }
 
         .progress-fill {
@@ -368,11 +357,11 @@
             font-weight: 500;
             color: #666;
             margin-top: 4px;
-            grid-column: 1 / -1; 
+            grid-column: 1 / -1;
             padding-top: 10px;
             border-top: 1px dashed #e0e0e0;
         }
-        
+
         .job-status.error { color: #e74c3c; }
         .job-status.complete { color: #28a745; }
         .job-status.converting { color: #667eea; }
@@ -390,16 +379,81 @@
         .error.show {
             display: block;
         }
-        
+
+        .seo-content {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 1200px;
+            margin: 0 auto 32px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .seo-content h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin: 32px 0 16px 0;
+        }
+
+        .seo-content h3 {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin: 24px 0 12px 0;
+        }
+
+        .seo-content p {
+            margin-bottom: 16px;
+        }
+
+        .seo-content ul, .seo-content ol {
+            margin: 16px 0 16px 32px;
+        }
+
+        .seo-content li {
+            margin-bottom: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .ad-space {
+            text-align: center;
+            margin: 32px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 1200px;
+        }
+
         .footer {
             margin-top: 48px;
             text-align: center;
-            max-width: 800px;
+            max-width: 1200px;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
-        
+
         .footer-promo {
             margin: 32px auto 24px auto;
             max-width: 800px;
@@ -408,7 +462,6 @@
         .footer-promo a {
             display: block;
             transition: transform 0.3s ease;
-            text-align: center;
         }
 
         .footer-promo a:hover {
@@ -420,15 +473,6 @@
             height: auto;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .modal-sponsor img {
-            width: 100%;
-            max-width: 200px;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin: 0 auto;
         }
 
         .btn-donate {
@@ -466,42 +510,38 @@
             border-color: white;
         }
 
-        .ad-space {
-            text-align: center;
-            margin: 32px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        @media (max-width: 640px) {
-            .container {
+        @media (max-width: 768px) {
+            .container, .seo-content {
                 padding: 32px 24px;
             }
 
             h1 {
                 font-size: 2rem;
             }
-            
+
             .job-card {
                 grid-template-columns: 1fr;
             }
-            
+
             .job-actions {
                 flex-direction: row;
-                min-width: unset;
-                width: 100%;
             }
-            .format-selector {
-                width: 100%;
+
+            .seo-content h2 {
+                font-size: 1.5rem;
             }
-            .job-details {
-                flex-direction: column;
-                align-items: flex-start;
+
+            .seo-content h3 {
+                font-size: 1.2rem;
             }
-            .job-status {
-                padding-top: 10px;
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .nav-link a {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -517,16 +557,20 @@
     
     <div class="container">
         <h1>convert.yourdsgn.pro</h1>
-        <p class="tagline">100+ File Format Conversions - Powered by Docker 🚀</p>
+        <p class="tagline">100+ Free File Format Conversions - No Sign Up Required ✨</p>
         
         <div class="info-box">
-            <p>Convert images, documents (PDF/DOCX), audio, and video with maximum compatibility. Your files are sent to a private server API for processing and deleted immediately afterward.</p>
+            <p><strong>Your Privacy is Our Priority:</strong> Simple conversions happen instantly in your browser. Complex formats use our secure processing system. Either way, your files are never stored and are automatically deleted after conversion.</p>
+            <div class="privacy-badge">
+                <span>🔒</span>
+                <span>Zero Data Retention</span>
+            </div>
         </div>
         
         <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
             <div class="upload-icon">📁</div>
             <div class="upload-text">Click to upload or drag & drop (multiple files allowed)</div>
-            <div class="upload-subtext">Supports: Images, Documents, Audio, Video, Archives & More</div>
+            <div class="upload-subtext">Images • Documents • Audio • Video • Archives & More</div>
         </div>
 
         <input type="file" id="fileInput" class="file-input" accept="*/*" multiple>
@@ -534,19 +578,12 @@
         <div id="converterApp" style="display: none;">
             <div class="queue-header">Conversion Queue (<span id="queueCount">0</span> files)</div>
             
-            <div class="queue-container" id="queueContainer">
-                <!-- Job Cards will be dynamically added here -->
-            </div>
+            <div class="queue-container" id="queueContainer"></div>
             
             <div class="error" id="error"></div>
 
-            <!-- Global Controls -->
-            <button class="btn btn-primary btn-start-conversion" id="startConversionBtn" onclick="startConversion()">
+            <button class="btn btn-primary" id="startConversionBtn" onclick="startConversion()">
                 Start Conversion
-            </button>
-            
-            <button class="btn btn-primary btn-download-all" id="downloadAllBtn" onclick="downloadAllAsZip()" style="display: none;">
-                Download All as ZIP
             </button>
 
             <button class="btn btn-secondary" onclick="resetConverter()">
@@ -559,7 +596,7 @@
     <div class="ad-space">
         <ins class="adsbygoogle"
              style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-client="ca-pub-6489624202319026"
              data-ad-slot="YYYYYYYYYY"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
@@ -568,15 +605,265 @@
         </script>
     </div>
 
-    <!-- New: Donate Promo Image -->
+    <!-- SEO Content Section -->
+    <div class="seo-content">
+        <h2>The Ultimate Free File Converter: Transform Any File Format Instantly</h2>
+        
+        <p>Welcome to convert.yourdsgn.pro, your go-to destination for <strong>free file conversion</strong> services. Whether you need to convert images, documents, audio files, or videos, our powerful online file converter handles over 100 different file formats with ease. Best of all, there's no registration required, no hidden fees, and no limitations on the number of files you can convert.</p>
+
+        <h3>Why Choose Our Free Online File Converter?</h3>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>🔒 Complete Privacy</h4>
+                <p>Your files are processed securely and deleted immediately after conversion. We never store, view, or share your data.</p>
+            </div>
+            <div class="feature-card">
+                <h4>⚡ Lightning Fast</h4>
+                <p>Simple conversions happen instantly in your browser. Complex formats are processed on our secure servers in seconds.</p>
+            </div>
+            <div class="feature-card">
+                <h4>💯 100% Free Forever</h4>
+                <p>No trial periods, no premium upgrades. Every feature is completely free with unlimited conversions.</p>
+            </div>
+            <div class="feature-card">
+                <h4>📱 Works Everywhere</h4>
+                <p>Access from any device - desktop, tablet, or mobile. No software installation required.</p>
+            </div>
+        </div>
+
+        <h3>Supported File Formats and Conversions</h3>
+
+        <p>Our <strong>online file converter</strong> supports an extensive range of file types, making it the most versatile conversion tool available online. Here's what you can convert:</p>
+
+        <h4>Image Conversion - Free Image Format Converter</h4>
+        <p>Transform your images between popular formats with our <strong>free image converter</strong>. Whether you need to convert JPG to PNG, PNG to WebP, or any other image format, we've got you covered:</p>
+        <ul>
+            <li><strong>JPG/JPEG Converter:</strong> Convert to and from JPEG format, the most widely used image format for photography and web graphics</li>
+            <li><strong>PNG Converter:</strong> Perfect for graphics with transparency, convert images to PNG for lossless quality</li>
+            <li><strong>WebP Converter:</strong> Modern format with superior compression - convert images to WebP for faster website loading</li>
+            <li><strong>GIF Converter:</strong> Create or convert animated GIFs and static images</li>
+            <li><strong>BMP, ICO, TIFF:</strong> Support for legacy and professional formats</li>
+        </ul>
+
+        <h4>Document Conversion - PDF and Office Files</h4>
+        <p>Our <strong>document converter</strong> handles all major office and document formats. Convert PDF files, Word documents, spreadsheets, and more:</p>
+        <ul>
+            <li><strong>PDF Converter:</strong> Convert documents to PDF or extract content from PDF files. Our PDF to Word converter preserves formatting and layout</li>
+            <li><strong>Word Converter (DOCX/DOC):</strong> Convert Word documents to PDF, HTML, or other formats instantly</li>
+            <li><strong>Excel Converter (XLSX/XLS):</strong> Transform spreadsheets to CSV, JSON, or PDF with our Excel converter</li>
+            <li><strong>Text File Converter:</strong> Convert between TXT, RTF, Markdown, HTML, JSON, CSV, and XML formats</li>
+            <li><strong>PowerPoint Converter:</strong> Convert presentations to PDF or extract slides</li>
+        </ul>
+
+        <h4>Audio Conversion - Free Audio Format Converter</h4>
+        <p>Need to convert audio files? Our <strong>audio converter</strong> supports all popular formats:</p>
+        <ul>
+            <li><strong>MP3 Converter:</strong> Convert any audio to MP3, the universal audio format compatible with all devices</li>
+            <li><strong>WAV Converter:</strong> Uncompressed audio conversion for professional quality</li>
+            <li><strong>OGG and FLAC:</strong> High-quality audio formats for audiophiles</li>
+            <li><strong>M4A, AAC, WMA:</strong> Convert between proprietary and open formats</li>
+        </ul>
+
+        <h4>Video Conversion - Online Video Converter</h4>
+        <p>Transform video files with our <strong>video converter</strong>. Convert between formats or extract audio:</p>
+        <ul>
+            <li><strong>MP4 Converter:</strong> Convert videos to MP4 for maximum compatibility</li>
+            <li><strong>WebM and AVI:</strong> Modern and legacy video format support</li>
+            <li><strong>Video to GIF:</strong> Extract frames and create animated GIFs from videos</li>
+            <li><strong>Video to Audio:</strong> Extract MP3 audio from video files</li>
+        </ul>
+
+        <h3>How Our File Converter Protects Your Privacy</h3>
+
+        <p>In an era where <strong>data privacy</strong> is paramount, we've designed our file converter with security as the top priority. Here's how we ensure your files remain completely private:</p>
+
+        <ol>
+            <li><strong>Automatic Deletion:</strong> Every file you upload is automatically and permanently deleted immediately after conversion. We maintain zero data retention policies.</li>
+            <li><strong>Secure Processing:</strong> All file transfers use industry-standard HTTPS encryption. Your files are protected during transmission.</li>
+            <li><strong>No User Tracking:</strong> We don't create user accounts, track conversion history, or collect personal information. You remain completely anonymous.</li>
+            <li><strong>Browser-First Approach:</strong> Simple conversions happen directly in your browser without ever leaving your device, ensuring maximum privacy.</li>
+            <li><strong>No Third-Party Access:</strong> Your files are never shared with, sold to, or accessed by any third parties. We're the only ones who process your files, and we delete them immediately.</li>
+        </ol>
+
+        <h3>The Benefits of Using a Free Online File Converter</h3>
+
+        <p>Why should you choose an <strong>online file converter</strong> over downloading desktop software? Here are the compelling advantages:</p>
+
+        <p><strong>No Software Installation:</strong> Forget about downloading bulky desktop applications that slow down your computer. Our web-based converter works instantly from any browser - Chrome, Firefox, Safari, or Edge. No plugins, no extensions, no hassle.</p>
+
+        <p><strong>Cross-Platform Compatibility:</strong> Whether you're on Windows, Mac, Linux, or even a Chromebook, our file converter works seamlessly. It's also fully responsive on mobile devices, so you can convert files on your smartphone or tablet.</p>
+
+        <p><strong>Always Up-to-Date:</strong> Unlike desktop software that requires constant updates, our online converter is always running the latest version with support for new file formats and conversion methods.</p>
+
+        <p><strong>Save Disk Space:</strong> Desktop conversion software can consume gigabytes of storage space. Our online solution uses zero local storage, keeping your device clean and fast.</p>
+
+        <p><strong>Batch Processing:</strong> Convert multiple files simultaneously. Upload a batch of images, documents, or audio files and convert them all at once, saving valuable time.</p>
+
+        <h3>Common File Conversion Use Cases</h3>
+
+        <p>Our users rely on convert.yourdsgn.pro for various professional and personal needs:</p>
+
+        <p><strong>Web Developers and Designers:</strong> Optimize images for websites by converting to WebP, resize graphics, or create favicons from images. Our <strong>image format converter</strong> is essential for web optimization.</p>
+
+        <p><strong>Business Professionals:</strong> Convert presentations to PDF for universal sharing, transform spreadsheets to CSV for data analysis, or convert Word documents to PDF for consistent formatting across devices.</p>
+
+        <p><strong>Content Creators:</strong> Extract audio from videos for podcasts, convert videos to GIFs for social media, or optimize images for faster loading on your blog or website.</p>
+
+        <p><strong>Students and Educators:</strong> Convert research papers to PDF, transform lecture notes between formats, or prepare presentation materials in universally compatible formats.</p>
+
+        <p><strong>Photographers and Artists:</strong> Convert RAW images to JPEG for sharing, create PNG versions with transparency, or prepare high-quality TIFF files for printing.</p>
+
+        <h3>Free URL Shortener - Bonus Tool</h3>
+
+        <p>Did you know we also offer a <strong>free URL shortener</strong>? Visit <a href="https://yourdsgn.pro" target="_blank" style="color: #667eea;">yourdsgn.pro</a> to create short, memorable links for your social media posts, marketing campaigns, or any sharing needs. Just like our file converter, it's completely free with no registration required. Perfect for:</p>
+
+        <ul>
+            <li>Social media sharing (Twitter, Facebook, Instagram)</li>
+            <li>Email marketing campaigns</li>
+            <li>Print materials with QR codes</li>
+            <li>Analytics and click tracking</li>
+            <li>Creating branded short links</li>
+        </ul>
+
+        <h3>Frequently Asked Questions About File Conversion</h3>
+
+        <p><strong>Is there a file size limit?</strong> Most files up to 50MB can be converted instantly. Larger files may take a bit longer but are fully supported.</p>
+
+        <p><strong>Do I need to create an account?</strong> Absolutely not! Our <strong>free file converter</strong> requires no registration, no login, and no personal information. Just upload and convert.</p>
+
+        <p><strong>How many files can I convert?</strong> There's no limit! Convert as many files as you need, whenever you need. We don't impose artificial restrictions.</p>
+
+        <p><strong>What happens to my files after conversion?</strong> Your files are automatically and permanently deleted immediately after conversion. We do not store any files, metadata, or conversion history.</p>
+
+        <p><strong>Can I convert files on my phone?</strong> Yes! Our converter is fully mobile-responsive and works perfectly on smartphones and tablets of all types.</p>
+
+        <p><strong>Is the quality preserved during conversion?</strong> We use industry-standard conversion algorithms to maintain the highest quality possible. For images, you can expect excellent quality preservation. For documents, formatting and layout are maintained as closely as possible.</p>
+
+        <p><strong>Why is this service free?</strong> We believe essential tools should be accessible to everyone. Our service is supported by optional donations and non-intrusive advertising, allowing us to keep all features completely free.</p>
+
+        <h3>The Technology Behind Secure File Conversion</h3>
+
+        <p>Our <strong>online file converter</strong> uses a sophisticated hybrid approach to deliver the best combination of speed, quality, and privacy:</p>
+
+        <p><strong>Client-Side Processing:</strong> Simple conversions like basic image format changes, text transformations, and data format conversions happen directly in your web browser using advanced JavaScript and HTML5 APIs. This means your files never leave your device for these operations, providing the ultimate in privacy and speed.</p>
+
+        <p><strong>Secure Server Processing:</strong> For complex conversions that require specialized encoding algorithms - such as PDF creation, advanced audio/video transcoding, or document format transformations - we use a secure processing system. Your files are encrypted during transmission, processed immediately, and then permanently deleted. The entire process takes just seconds, and your data is never retained.</p>
+
+        <p><strong>Encryption and Security:</strong> All data transmission uses TLS 1.3 encryption, the same security standard used by banks and financial institutions. Your files are protected from unauthorized access during every step of the conversion process.</p>
+
+        <h3>Tips for Optimal File Conversion Results</h3>
+
+        <p>Get the best results from your file conversions with these professional tips:</p>
+
+        <p><strong>Choosing the Right Format:</strong> Select your output format based on your intended use. Use JPEG for photographs to be viewed on screens, PNG for graphics with transparency, WebP for modern websites, and PDF for documents that need to look identical across all devices.</p>
+
+        <p><strong>Image Quality Considerations:</strong> When converting to compressed formats like JPEG, understand that some quality loss may occur. For archival purposes or professional printing, consider using lossless formats like PNG or TIFF.</p>
+
+        <p><strong>Document Conversion Best Practices:</strong> When converting complex documents to PDF, ensure your source file is properly formatted. Convert from the highest quality source available for best results.</p>
+
+        <p><strong>Audio Format Selection:</strong> MP3 offers the best compatibility across devices and platforms. For audiophile-quality preservation, use FLAC or WAV. For web streaming, consider OGG or AAC formats.</p>
+
+        <p><strong>Video Optimization:</strong> MP4 with H.264 encoding is the most universally compatible video format. For web use, WebM offers excellent compression with good quality.</p>
+
+        <h3>Why File Format Conversion Matters</h3>
+
+        <p>In today's digital ecosystem, <strong>file format compatibility</strong> is more important than ever. Here's why having access to a reliable file converter is essential:</p>
+
+        <p><strong>Device Compatibility:</strong> Different devices and platforms support different file formats. Converting your files ensures they work everywhere - from smartphones to smart TVs, from Windows PCs to MacBooks.</p>
+
+        <p><strong>Software Requirements:</strong> Not all software applications can open all file types. Converting files to compatible formats ensures you can always access your data, regardless of which application you're using.</p>
+
+        <p><strong>File Size Optimization:</strong> Modern formats like WebP and HEIC offer superior compression, allowing you to reduce file sizes by 30-80% without noticeable quality loss. This is crucial for website performance and storage management.</p>
+
+        <p><strong>Professional Standards:</strong> Many industries have specific format requirements. Printers require TIFF or high-resolution PDF, while web publishers need optimized JPEGs or WebP images. Our converter helps you meet these professional standards.</p>
+
+        <p><strong>Future-Proofing:</strong> Technology evolves rapidly, and older file formats may become obsolete. Converting to modern, widely-supported formats ensures your files remain accessible for years to come.</p>
+
+        <h3>Environmental Benefits of Online Conversion Tools</h3>
+
+        <p>Using our online file converter isn't just convenient - it's also environmentally responsible:</p>
+
+        <p><strong>Reduced Energy Consumption:</strong> Cloud-based processing is more energy-efficient than running conversion software on millions of individual computers. Our servers are optimized for maximum efficiency.</p>
+
+        <p><strong>No Unnecessary Downloads:</strong> By eliminating the need for software downloads and updates, we reduce internet bandwidth consumption and storage requirements across millions of devices.</p>
+
+        <p><strong>Extended Device Lifespan:</strong> Keeping your device free from resource-intensive conversion software helps it run faster and last longer, reducing electronic waste.</p>
+
+        <h3>Supporting Small Business and Independent Creators</h3>
+
+        <p>We're proud to be part of the <a href="https://www.alfredwebdesign.com" target="_blank" style="color: #667eea;">Alfred Web Design & Shirts</a> family of services. As a small business ourselves, we understand the importance of accessible, affordable tools for entrepreneurs, freelancers, and independent creators.</p>
+
+        <p>That's why we've committed to keeping convert.yourdsgn.pro completely free forever. Whether you're running a startup, managing a small business, or creating content as a side hustle, you shouldn't have to pay expensive subscription fees for basic file conversion tools.</p>
+
+        <h3>Get Started with Free File Conversion Today</h3>
+
+        <p>Ready to convert your files? It's incredibly simple:</p>
+
+        <ol>
+            <li><strong>Select Your Files:</strong> Click the upload area or drag and drop one or multiple files</li>
+            <li><strong>Choose Output Format:</strong> Select your desired output format from the dropdown menu for each file</li>
+            <li><strong>Convert:</strong> Click the "Start Conversion" button and watch as your files are processed in seconds</li>
+            <li><strong>Download:</strong> Download your converted files individually or all at once</li>
+        </ol>
+
+        <p>No registration, no credit card, no gimmicks. Just fast, secure, free file conversion whenever you need it.</p>
+
+        <h3>Our Commitment to You</h3>
+
+        <p>At convert.yourdsgn.pro, we're committed to providing the best free file conversion service available online. This means:</p>
+
+        <ul>
+            <li><strong>Continuous Improvement:</strong> We regularly add support for new file formats and improve our conversion algorithms</li>
+            <li><strong>Reliability:</strong> Our servers maintain 99.9% uptime so you can convert files whenever you need to</li>
+            <li><strong>Privacy First:</strong> We will never compromise on your privacy or sell your data</li>
+            <li><strong>Free Forever:</strong> We promise to keep all core conversion features completely free with no limitations</li>
+            <li><strong>Responsive Support:</strong> While we don't have a dedicated support team, we actively listen to user feedback and continuously improve based on your needs</li>
+        </ul>
+
+        <h3>Explore Our Other Free Tools</h3>
+
+        <p>Convert.yourdsgn.pro is part of a suite of free online tools designed to make your digital life easier:</p>
+
+        <p><strong>Free URL Shortener:</strong> Visit <a href="https://yourdsgn.pro" target="_blank" style="color: #667eea;">yourdsgn.pro</a> for instant, free link shortening. Perfect for social media, marketing campaigns, and making long URLs more manageable. Like our file converter, it requires no registration and offers unlimited use.</p>
+
+        <p><strong>Professional Web Design:</strong> Need a website for your business? <a href="https://www.alfredwebdesign.com" target="_blank" style="color: #667eea;">Alfred Web Design</a> offers professional, affordable web design services. We create custom websites that are fast, secure, and optimized for search engines.</p>
+
+        <p><strong>Custom Apparel Printing:</strong> Looking for high-quality custom t-shirts, hoodies, or promotional products? Check out our <a href="https://www.alfredwebdesign.com/#apparel" target="_blank" style="color: #667eea;">apparel printing services</a> for small and large orders.</p>
+
+        <h3>The Future of File Conversion</h3>
+
+        <p>As technology continues to evolve, so does convert.yourdsgn.pro. We're constantly working on:</p>
+
+        <ul>
+            <li>Adding support for emerging file formats and codecs</li>
+            <li>Improving conversion speed and quality</li>
+            <li>Expanding batch processing capabilities</li>
+            <li>Enhancing mobile device compatibility</li>
+            <li>Implementing advanced features based on user feedback</li>
+        </ul>
+
+        <p>Your feedback helps shape the future of our service. If you have suggestions or encounter any issues, we'd love to hear from you.</p>
+
+        <h3>Conclusion: Your Go-To Free File Converter</h3>
+
+        <p>Whether you need to convert a single image or batch process dozens of documents, convert.yourdsgn.pro is your reliable, secure, and completely free solution. With support for over 100 file formats, lightning-fast processing, and an unwavering commitment to your privacy, we're confident you'll find our <strong>online file converter</strong> to be an indispensable tool in your digital toolkit.</p>
+
+        <p>Start converting files today - no registration required, no hidden costs, and no compromises on security or quality. Experience the simplicity and power of truly free file conversion.</p>
+
+        <p style="text-align: center; margin-top: 32px; font-size: 1.1rem; color: #667eea;">
+            <strong>Ready to convert? Scroll up and upload your files now!</strong>
+        </p>
+    </div>
+
     <div class="footer-promo">
         <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank">
-            <img src="/donate-convert.jpg" alt="Support convert.yourdsgn.pro with a donation">
+            <img src="/donate-convert.jpg" alt="Support convert.yourdsgn.pro - Free file converter">
         </a>
     </div>
 
     <div class="footer">
-        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank" class="btn-donate">☕ Donate</a>
+        <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank" class="btn-donate">☕ Support This Free Tool</a>
         
         <div class="footer-promo">
             <a href="https://go.yourdsgn.pro/alfredweb" target="_blank">
@@ -590,46 +877,42 @@
     </div>
 
     <script>
-        // *** IMPORTANT: SET YOUR SERVER ENDPOINT HERE ***
-        // Using the Cloudflare Tunnel domain requested by the user.
-        const CONVERSION_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
+        // API Endpoint Configuration
+        const SERVER_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
+        const USE_SERVER_FOR = ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'odt', 'ods', 'mp4', 'avi', 'mov', 'mkv', 'flv'];
 
-        // NOTE: Format list is updated to match the server-side FFmpeg and LibreOffice capability
+        // Format Support Configuration
         const formatSupport = {
             image: {
                 icon: '🖼️',
-                input: ['png', 'jpeg', 'jpg', 'webp', 'gif', 'svg', 'tiff', 'ico', 'bmp', 'psd', 'raw', 'heic'],
-                output: ['jpg', 'png', 'webp', 'gif', 'bmp', 'ico', 'tiff', 'pdf']
+                input: ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg', 'ico', 'tiff', 'tif', 'heic'],
+                output: ['jpg', 'png', 'webp', 'gif', 'bmp', 'ico']
             },
             document: {
                 icon: '📄',
-                input: ['txt', 'md', 'html', 'htm', 'json', 'csv', 'xml', 'rtf', 'docx', 'doc', 'odt', 'pdf', 'epub', 'rst'],
-                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf', 'pdf', 'docx', 'odt']
+                input: ['txt', 'md', 'html', 'htm', 'json', 'csv', 'xml', 'rtf', 'pdf', 'doc', 'docx', 'odt'],
+                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf', 'pdf']
             },
             audio: {
                 icon: '🎵',
-                input: ['mp3', 'wav', 'flac', 'ogg', 'm4a', 'aac', 'wma', 'aiff', 'mkv', 'mp4', 'avi'],
-                output: ['mp3', 'wav', 'ogg', 'flac', 'aac']
+                input: ['mp3', 'wav', 'ogg', 'webm', 'm4a', 'aac', 'flac', 'wma'],
+                output: ['mp3', 'wav', 'ogg']
             },
             video: {
                 icon: '🎬',
-                input: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'mpeg', 'mpg', '3gp'],
-                output: ['mp4', 'webm', 'avi', 'gif', 'mp3']
-            },
-            archive: {
-                icon: '📦',
-                input: ['zip', 'rar', 'tar', 'gz', '7z', 'targz', 'bzip2'],
-                output: ['zip'] 
+                input: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'mpeg', 'mpg'],
+                output: ['mp4', 'webm', 'gif']
             },
             spreadsheet: {
                 icon: '📊',
                 input: ['xlsx', 'xls', 'csv', 'ods'],
-                output: ['csv', 'json', 'html', 'pdf', 'xlsx']
+                output: ['csv', 'json', 'html', 'pdf']
             }
         };
 
         let conversionQueue = [];
         let isConverting = false;
+        let jobIdCounter = 0;
 
         const fileInput = document.getElementById('fileInput');
         const uploadZone = document.getElementById('uploadZone');
@@ -637,23 +920,22 @@
         const errorDiv = document.getElementById('error');
         const converterApp = document.getElementById('converterApp');
         const startConversionBtn = document.getElementById('startConversionBtn');
-        const downloadAllBtn = document.getElementById('downloadAllBtn');
         const queueCount = document.getElementById('queueCount');
-        let jobIdCounter = 0;
 
-        // Setup drag and drop
+        // Drag and drop setup
         uploadZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             uploadZone.classList.add('dragging');
         });
+
         uploadZone.addEventListener('dragleave', () => {
             uploadZone.classList.remove('dragging');
         });
+
         uploadZone.addEventListener('drop', (e) => {
             e.preventDefault();
             uploadZone.classList.remove('dragging');
-            const files = e.dataTransfer.files;
-            handleFileSelect(files);
+            handleFileSelect(e.dataTransfer.files);
         });
 
         fileInput.addEventListener('change', (e) => {
@@ -662,11 +944,8 @@
 
         function handleFileSelect(files) {
             errorDiv.classList.remove('show');
-            
             if (files.length === 0) return;
 
-            if (conversionQueue.length > 0) resetConverter(); 
-            
             converterApp.style.display = 'block';
 
             Array.from(files).forEach(file => {
@@ -688,36 +967,35 @@
                     conversionQueue.push(job);
                     queueContainer.appendChild(job.element);
                 } else {
-                    showError(`Unsupported file format for: ${file.name}`);
+                    showError(`Unsupported file: ${file.name}`);
                 }
             });
             updateGlobalControls();
         }
-        
+
         function createJobCard(jobId, file, fileType, sourceExt) {
-            const ext = sourceExt;
             const config = formatSupport[fileType];
-            const formats = config.output.filter(f => f !== ext);
+            const formats = config.output.filter(f => f !== sourceExt);
             
             const card = document.createElement('div');
             card.className = 'job-card';
             card.id = jobId;
 
-            const selectOptions = formats.map(f => `<option value="${f}">.${f}</option>`).join('');
+            const selectOptions = formats.map(f => `<option value="${f}">.${f.toUpperCase()}</option>`).join('');
 
             card.innerHTML = `
                 <div class="job-details">
-                    <div class="file-icon">${config.icon}</div>
+                    <div style="font-size: 32px;">${config.icon}</div>
                     <div class="job-file-meta">
                         <h4>${file.name}</h4>
-                        <p>${formatFileSize(file.size)} | .${ext}</p>
+                        <p>${formatFileSize(file.size)} • .${sourceExt.toUpperCase()}</p>
                     </div>
                 </div>
                 
                 <div class="format-selector">
                     <label>Convert to:</label>
-                    <select class="format-dropdown" id="${jobId}-select" ${formats.length === 0 ? 'disabled' : ''}>
-                        <option value="" disabled selected>${formats.length > 0 ? 'Select Format' : 'No Output Formats'}</option>
+                    <select class="format-dropdown" id="${jobId}-select">
+                        <option value="" disabled selected>Select Format</option>
                         ${selectOptions}
                     </select>
                 </div>
@@ -727,16 +1005,19 @@
                     <button class="btn-small btn-remove-job" onclick="removeJob('${jobId}')">Remove</button>
                 </div>
                 
-                <div class="progress-bar" id="${jobId}-progress">
+                <div class="progress-bar">
                     <div class="progress-fill" id="${jobId}-progress-fill"></div>
                 </div>
                 
-                <div class="job-status" id="${jobId}-status">Pending</div>
+                <div class="job-status" id="${jobId}-status">Ready - Select output format</div>
             `;
             
             card.querySelector(`#${jobId}-select`).addEventListener('change', (e) => {
                 const job = conversionQueue.find(j => j.id === jobId);
-                if (job) job.selectedFormat = e.target.value;
+                if (job) {
+                    job.selectedFormat = e.target.value;
+                    updateJobStatus(jobId, 'pending', 'Ready to convert');
+                }
             });
             
             return card;
@@ -748,9 +1029,12 @@
                 conversionQueue.splice(index, 1);
                 document.getElementById(jobId).remove();
                 updateGlobalControls();
+                if (conversionQueue.length === 0) {
+                    resetConverter();
+                }
             }
         }
-        
+
         function updateJobStatus(jobId, status, message = '') {
             const job = conversionQueue.find(j => j.id === jobId);
             if (!job) return;
@@ -761,44 +1045,240 @@
             const selectEl = document.getElementById(`${jobId}-select`);
             
             statusEl.className = 'job-status ' + status;
-            statusEl.textContent = status.charAt(0).toUpperCase() + status.slice(1) + (message ? `: ${message}` : '');
+            statusEl.textContent = message || status;
             
-            selectEl.disabled = status === 'converting' || status === 'complete' || status === 'error';
+            if (status === 'converting' || status === 'complete') {
+                selectEl.disabled = true;
+            }
 
             if (status === 'complete') {
                 document.getElementById(jobId).classList.add('complete');
                 downloadBtn.style.display = 'block';
-                downloadBtn.onclick = () => downloadFile(job.file.name, job.selectedFormat, job.convertedBlob);
-            } else {
-                downloadBtn.style.display = 'none';
-                document.getElementById(jobId).classList.remove('complete');
+                downloadBtn.onclick = () => downloadFile(job);
             }
         }
 
         function updateJobProgress(jobId, percentage) {
             const fill = document.getElementById(`${jobId}-progress-fill`);
-            if (fill) {
-                fill.style.width = `${percentage}%`;
-            }
+            if (fill) fill.style.width = `${percentage}%`;
         }
-        
+
         function updateGlobalControls() {
             queueCount.textContent = conversionQueue.length;
-            startConversionBtn.style.display = conversionQueue.length > 0 ? 'block' : 'none';
-            
-            const allComplete = conversionQueue.length > 0 && conversionQueue.every(j => j.status === 'complete' || j.status === 'error');
-            const hasConvertedFiles = conversionQueue.some(j => j.status === 'complete');
-            
-            downloadAllBtn.style.display = allComplete && hasConvertedFiles ? 'block' : 'none';
         }
 
         function getFileType(ext) {
             for (const [type, config] of Object.entries(formatSupport)) {
-                if (config.input.includes(ext)) {
-                    return type;
-                }
+                if (config.input.includes(ext)) return type;
             }
             return null;
+        }
+
+        function needsServerProcessing(sourceExt, targetFormat) {
+            return USE_SERVER_FOR.includes(sourceExt) || USE_SERVER_FOR.includes(targetFormat);
+        }
+
+        async function startConversion() {
+            if (isConverting) return;
+            
+            const jobsToConvert = conversionQueue.filter(j => j.selectedFormat && j.status !== 'complete');
+            if (jobsToConvert.length === 0) {
+                showError('Please select output formats for your files');
+                return;
+            }
+
+            isConverting = true;
+            startConversionBtn.disabled = true;
+            startConversionBtn.textContent = 'Converting...';
+            errorDiv.classList.remove('show');
+
+            for (const job of jobsToConvert) {
+                await processJob(job);
+            }
+            
+            isConverting = false;
+            startConversionBtn.disabled = false;
+            startConversionBtn.textContent = 'Start Conversion';
+        }
+
+        async function processJob(job) {
+            updateJobStatus(job.id, 'converting', 'Processing...');
+            updateJobProgress(job.id, 10);
+            
+            try {
+                const needsServer = needsServerProcessing(job.sourceExt, job.selectedFormat);
+                
+                if (needsServer) {
+                    await convertViaServer(job);
+                } else {
+                    await convertInBrowser(job);
+                }
+                
+                updateJobProgress(job.id, 100);
+                updateJobStatus(job.id, 'complete', '✓ Conversion successful');
+                
+            } catch (err) {
+                updateJobProgress(job.id, 0);
+                updateJobStatus(job.id, 'error', `✗ ${err.message}`);
+            }
+        }
+
+        async function convertInBrowser(job) {
+            updateJobProgress(job.id, 30);
+            
+            if (job.fileType === 'image') {
+                job.convertedBlob = await convertImage(job.file, job.selectedFormat);
+            } else if (job.fileType === 'document' || job.fileType === 'spreadsheet') {
+                job.convertedBlob = await convertDocument(job.file, job.selectedFormat, job.sourceExt);
+            } else if (job.fileType === 'audio') {
+                job.convertedBlob = await convertAudio(job.file, job.selectedFormat);
+            } else {
+                throw new Error('Browser conversion not supported for this file type');
+            }
+            
+            updateJobProgress(job.id, 90);
+        }
+
+        async function convertViaServer(job) {
+            updateJobProgress(job.id, 20);
+            
+            const formData = new FormData();
+            formData.append('file', job.file);
+            formData.append('target_format', job.selectedFormat);
+            
+            updateJobProgress(job.id, 40);
+            
+            const response = await fetch(SERVER_API_ENDPOINT, {
+                method: 'POST',
+                body: formData
+            });
+            
+            updateJobProgress(job.id, 70);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error('Server conversion failed. Please try again.');
+            }
+
+            job.convertedBlob = await response.blob();
+            updateJobProgress(job.id, 90);
+        }
+
+        async function convertImage(file, targetFormat) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        
+                        if (targetFormat === 'jpg' || targetFormat === 'jpeg') {
+                            ctx.fillStyle = 'white';
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        }
+                        
+                        ctx.drawImage(img, 0, 0);
+                        
+                        const mimeType = targetFormat === 'jpg' ? 'image/jpeg' : `image/${targetFormat}`;
+                        canvas.toBlob((blob) => {
+                            blob ? resolve(blob) : reject(new Error('Image conversion failed'));
+                        }, mimeType, 0.95);
+                    };
+                    img.onerror = () => reject(new Error('Failed to load image'));
+                    img.src = e.target.result;
+                };
+                reader.onerror = () => reject(new Error('Failed to read file'));
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function convertDocument(file, targetFormat, sourceExt) {
+            const text = await file.text();
+            let content = text;
+            
+            if (sourceExt === 'json' && targetFormat === 'csv') {
+                const json = JSON.parse(text);
+                const array = Array.isArray(json) ? json : [json];
+                if (array.length > 0) {
+                    const headers = Object.keys(array[0]);
+                    content = [headers.join(','), ...array.map(row => 
+                        headers.map(h => JSON.stringify(row[h] || '')).join(',')
+                    )].join('\n');
+                }
+            } else if (sourceExt === 'csv' && targetFormat === 'json') {
+                const lines = text.trim().split('\n');
+                if (lines.length > 1) {
+                    const headers = lines[0].split(',');
+                    const json = lines.slice(1).map(line => {
+                        const values = line.split(',');
+                        return headers.reduce((obj, h, i) => {
+                            obj[h.trim()] = values[i]?.trim() || '';
+                            return obj;
+                        }, {});
+                    });
+                    content = JSON.stringify(json, null, 2);
+                }
+            } else if ((sourceExt === 'md' || sourceExt === 'txt') && targetFormat === 'html') {
+                content = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Document</title><style>body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:20px;line-height:1.6}</style></head><body><pre>${text}</pre></body></html>`;
+            }
+            
+            return new Blob([content], { type: 'text/plain' });
+        }
+
+        async function convertAudio(file, targetFormat) {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const arrayBuffer = await file.arrayBuffer();
+            const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+            const wav = audioBufferToWav(audioBuffer);
+            return new Blob([wav], { type: 'audio/wav' });
+        }
+
+        function audioBufferToWav(buffer) {
+            const length = buffer.length * buffer.numberOfChannels * 2 + 44;
+            const arrayBuffer = new ArrayBuffer(length);
+            const view = new DataView(arrayBuffer);
+            let pos = 0;
+
+            const setUint16 = (data) => { view.setUint16(pos, data, true); pos += 2; };
+            const setUint32 = (data) => { view.setUint32(pos, data, true); pos += 4; };
+
+            setUint32(0x46464952); setUint32(length - 8); setUint32(0x45564157);
+            setUint32(0x20746d66); setUint32(16); setUint16(1);
+            setUint16(buffer.numberOfChannels); setUint32(buffer.sampleRate);
+            setUint32(buffer.sampleRate * 2 * buffer.numberOfChannels);
+            setUint16(buffer.numberOfChannels * 2); setUint16(16);
+            setUint32(0x61746164); setUint32(length - pos - 4);
+
+            const channels = [];
+            for (let i = 0; i < buffer.numberOfChannels; i++) {
+                channels.push(buffer.getChannelData(i));
+            }
+
+            let offset = 0;
+            while (pos < length) {
+                for (let i = 0; i < buffer.numberOfChannels; i++) {
+                    let sample = Math.max(-1, Math.min(1, channels[i][offset]));
+                    sample = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
+                    view.setInt16(pos, sample, true);
+                    pos += 2;
+                }
+                offset++;
+            }
+            return arrayBuffer;
+        }
+
+        function downloadFile(job) {
+            if (!job.convertedBlob) return;
+            const fileName = job.file.name.substring(0, job.file.name.lastIndexOf('.'));
+            const url = URL.createObjectURL(job.convertedBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName}.${job.selectedFormat}`;
+            a.click();
+            URL.revokeObjectURL(url);
         }
 
         function resetConverter() {
@@ -807,125 +1287,12 @@
             jobIdCounter = 0;
             queueContainer.innerHTML = '';
             converterApp.style.display = 'none';
-            document.getElementById('error').classList.remove('show');
-            document.getElementById('fileInput').value = '';
-            updateGlobalControls();
-        }
-
-        async function startConversion() {
-            if (isConverting) return;
-            isConverting = true;
-            startConversionBtn.disabled = true;
-            startConversionBtn.textContent = 'Converting...';
             errorDiv.classList.remove('show');
-            downloadAllBtn.style.display = 'none';
-
-            for (const job of conversionQueue) {
-                if (job.status === 'complete' || job.status === 'error') continue;
-                
-                if (!job.selectedFormat) {
-                    updateJobStatus(job.id, 'error', 'No output format selected');
-                    continue;
-                }
-                
-                await processJob(job);
-            }
-            
-            isConverting = false;
-            startConversionBtn.disabled = false;
-            startConversionBtn.textContent = 'Start Conversion';
-            updateGlobalControls();
-        }
-
-        async function processJob(job) {
-            updateJobStatus(job.id, 'converting');
-            updateJobProgress(job.id, 10);
-            
-            try {
-                const formData = new FormData();
-                formData.append('file', job.file);
-                formData.append('target_format', job.selectedFormat);
-                
-                updateJobProgress(job.id, 30);
-                
-                const response = await fetch(CONVERSION_API_ENDPOINT, {
-                    method: 'POST',
-                    body: formData,
-                });
-                
-                updateJobProgress(job.id, 70);
-
-                if (!response.ok) {
-                    let errorDetails = `Server error (${response.status}).`;
-                    try {
-                        const errorText = await response.text();
-                        // Attempt to parse JSON first, fallback to raw text
-                        const errorJson = JSON.parse(errorText);
-                        errorDetails = errorJson.error || errorDetails;
-                    } catch {
-                        // Use generic error if response isn't clean JSON
-                        errorDetails = `Conversion failed. Check server logs for details.`;
-                    }
-                    throw new Error(errorDetails);
-                }
-
-                const convertedBlob = await response.blob();
-                
-                updateJobProgress(job.id, 90);
-                job.convertedBlob = convertedBlob;
-                
-                setTimeout(() => {
-                    updateJobProgress(job.id, 100);
-                    updateJobStatus(job.id, 'complete');
-                }, 500);
-                
-            } catch (err) {
-                updateJobProgress(job.id, 0);
-                updateJobStatus(job.id, 'error', err.message || 'Conversion failed by API.');
-            }
-        }
-        
-        function downloadFile(originalFileName, targetFormat, blob) {
-            if (!blob) return;
-            
-            const fileName = originalFileName.substring(0, originalFileName.lastIndexOf('.'));
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${fileName}.${targetFormat}`;
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        function downloadAllAsZip() {
-            if (typeof JSZip === 'undefined') {
-                showError('The Download All feature requires a client-side ZIP library (like JSZip) which is not included. Please include the JSZip script in the HTML <head>.');
-                return;
-            }
-            
-            const zip = new JSZip();
-            const completedJobs = conversionQueue.filter(j => j.status === 'complete');
-            
-            if (completedJobs.length === 0) return;
-
-            completedJobs.forEach(job => {
-                const fileName = job.file.name.substring(0, job.file.name.lastIndexOf('.'));
-                const newFileName = `${fileName}.${job.selectedFormat}`;
-                zip.file(newFileName, job.convertedBlob);
-            });
-
-            zip.generateAsync({ type: "blob" })
-                .then(function(content) {
-                    downloadFile("conversions.zip", "zip", content);
-                })
-                .catch(err => {
-                    showError('Failed to generate ZIP file.');
-                    console.error('ZIP Error:', err);
-                });
+            fileInput.value = '';
         }
 
         function showError(message) {
-            errorDiv.textContent = message;
+            errorDiv.textContent = '⚠️ ' + message;
             errorDiv.classList.add('show');
         }
 
@@ -938,5 +1305,4 @@
         }
     </script>
 </body>
-
 </html>
