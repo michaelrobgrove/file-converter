@@ -35,6 +35,7 @@
             padding: 20px;
         }
 
+        /* --- Navigation Styles --- */
         .nav-bar {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -682,7 +683,7 @@
             <li><strong>Automatic Deletion:</strong> Every file you upload is automatically and permanently deleted immediately after conversion. We maintain zero data retention policies.</li>
             <li><strong>Secure Processing:</strong> All file transfers use industry-standard HTTPS encryption. Your files are protected during transmission.</li>
             <li><strong>No User Tracking:</strong> We don't create user accounts, track conversion history, or collect personal information. You remain completely anonymous.</li>
-            <li><strong>Browser-First Approach:</strong> Simple conversions happen directly in your browser without ever leaving your device, ensuring maximum privacy.</li>
+            <li><strong>Browser-First Approach:</strong> Simple conversions happen directly in your browser without ever leaving your device, providing the ultimate in privacy and speed.</li>
             <li><strong>No Third-Party Access:</strong> Your files are never shared with, sold to, or accessed by any third parties. We're the only ones who process your files, and we delete them immediately.</li>
         </ol>
 
@@ -767,6 +768,8 @@
         <p><strong>Video Optimization:</strong> MP4 with H.264 encoding is the most universally compatible video format. For web use, WebM offers excellent compression with good quality.</p>
 
         <h3>Why File Format Conversion Matters</h3>
+
+        <p>Why File Format Conversion Matters</p>
 
         <p>In today's digital ecosystem, <strong>file format compatibility</strong> is more important than ever. Here's why having access to a reliable file converter is essential:</p>
 
@@ -879,6 +882,7 @@
     <script>
         // API Endpoint Configuration
         const SERVER_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
+        // Note: The conversion logic now uses a hybrid approach, using the server for complex tasks like PDF, DOCX, and heavy media.
         const USE_SERVER_FOR = ['pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'odt', 'ods', 'mp4', 'avi', 'mov', 'mkv', 'flv'];
 
         // Format Support Configuration
@@ -1156,8 +1160,17 @@
             updateJobProgress(job.id, 70);
 
             if (!response.ok) {
+                // CRITICAL CHANGE: Instead of trying to parse JSON, throw a generic error
+                // if the HTTP status is bad. This prevents freezes/crashes on bad binary responses.
                 const errorText = await response.text();
-                throw new Error('Server conversion failed. Please try again.');
+                let errorDetails = `Server returned status ${response.status}.`;
+                try {
+                    const errorJson = JSON.parse(errorText);
+                    errorDetails = errorJson.error || errorDetails;
+                } catch {
+                    // Fallback to generic message if response isn't parseable JSON
+                }
+                throw new Error(errorDetails);
             }
 
             job.convertedBlob = await response.blob();

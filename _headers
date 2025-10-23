@@ -1,27 +1,18 @@
 /*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adsbygoogle.js; style-src 'self' 'unsafe-inline'; connect-src 'self'; img-src 'self' data: https:; font-src 'self'; frame-src https://googleads.g.doubleclick.net; frame-ancestors 'none'
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-```
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: strict-origin-when-cross-origin
 
-### **File 2: robots.txt**
-```
-User-agent: *
-Allow: /
+CRITICAL: Allow the frontend to talk to the backend API domain
 
-Sitemap: https://convert.yourdsgn.pro/sitemap.xml
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adsbygoogle.js https://partner.googleadservices.com; style-src 'self' 'unsafe-inline'; connect-src 'self' https://cnvt.yourdsgn.pro; img-src 'self' data: https:; font-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; frame-ancestors 'none'
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
-# Block bad bots
-User-agent: AhrefsBot
-User-agent: SemrushBot
-User-agent: MJ12bot
-User-agent: DotBot
-Disallow: /
+/convert
 
-# Crawl delay for aggressive bots
-User-agent: Baiduspider
-Crawl-delay: 10
+Ensure the browser can send requests to the API domain
+
+Access-Control-Allow-Origin: https://convert.yourdsgn.pro
+Access-Control-Allow-Methods: POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type
