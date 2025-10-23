@@ -6,14 +6,7 @@ Referrer-Policy: strict-origin-when-cross-origin
 
 CRITICAL: Allow the frontend to talk to the backend API domain, Google Fonts, and all Google domains
 
-Content-Security-Policy: default-src 'none'; \
-    script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adsbygoogle.js https://partner.googleadservices.com https://static.cloudflareinsights.com *.google.com *.google; \
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
-    connect-src 'self' https://cnvt.yourdsgn.pro *.google.com *.google; \
-    img-src 'self' data: https: *.google.com *.google; \
-    font-src 'self' https://fonts.gstatic.com; \
-    frame-src *.google.com *.google; \
-    frame-ancestors 'none'
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://adsbygoogle.js https://partner.googleadservices.com https://static.cloudflareinsights.com *.google.com *.google; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://cnvt.yourdsgn.pro *.google.com *.google; img-src 'self' data: https: *.google.com *.google; font-src 'self' https://fonts.gstatic.com; frame-src *.google.com *.google; frame-ancestors 'none'
 Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 /convert
