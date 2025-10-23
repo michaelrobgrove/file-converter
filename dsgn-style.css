@@ -1,0 +1,124 @@
+
+/* DSGN Brand Stylesheet - dsgn-style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Rubik:wght@300;400;500;700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    background: #1E2B41 url('DSGN_grey_back.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Alatsi', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+a {
+    color: #A0A0A0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+header, nav {
+    background: rgba(30, 43, 65, 0.9);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid #545454;
+}
+
+nav a {
+    padding: 0.75rem 1rem;
+    display: inline-block;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+.logo img {
+    height: 60px;
+    max-width: 100%;
+}
+
+main {
+    background: rgba(30, 43, 65, 0.85);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 1000px;
+}
+
+button, .btn {
+    background-color: #545454;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #6a6a6a;
+    transform: translateY(-1px);
+}
+
+input, textarea, select {
+    background: #2E2E2E;
+    color: #fff;
+    border: 1px solid #545454;
+    border-radius: 6px;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    color: #A0A0A0;
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    border-top: 1px solid #545454;
+    background: rgba(30, 43, 65, 0.9);
+}
+
+/* Donate and Banner Section */
+.donate-banner-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 900px;
+}
+
+.donate-banner-section img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.donate-banner-section .donate-btn {
+    background-color: #545454;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.donate-banner-section .donate-btn:hover {
+    background-color: #6d6d6d;
+}
