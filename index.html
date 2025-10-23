@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free File Converter - convert.yourdsgn.pro | Convert Files Instantly</title>
-    <meta name="description" content="Free online file converter with 100+ formats. Convert images, documents, audio, video, and more instantly in your browser. No uploads, complete privacy, 100% free forever.">
+    <title>Free File Converter - convert.yourdsgn.pro | Convert Files Instantly (Server-Side)</title>
+    <meta name="description" content="Free online file converter with 100+ formats. Convert images, documents, audio, video, and more instantly. Powered by Server-Side LibreOffice and FFmpeg for maximum compatibility.">
     <meta name="keywords" content="file converter, free converter, image converter, pdf converter, audio converter, video converter, document converter, convert files online">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <!-- IMPORTANT: Add JSZip dependency here for 'Download All as ZIP' feature. -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script> -->
     
     <style>
         * {
@@ -23,6 +26,57 @@
             flex-direction: column;
             padding: 20px;
         }
+
+        /* --- Navigation Styles --- */
+        .nav-bar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-link a {
+            color: #4a5568; /* Dark gray */
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link a:hover {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+        }
+
+        @media (max-width: 640px) {
+            .nav-bar {
+                padding: 10px 10px;
+            }
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-link a {
+                font-size: 0.85rem;
+            }
+        }
+        /* --- End Navigation Styles --- */
 
         .container {
             background: rgba(255, 255, 255, 0.95);
@@ -119,7 +173,6 @@
             display: none;
         }
 
-        /* New Styles for Queue/Jobs */
         .queue-header {
             font-size: 1.2rem;
             font-weight: 600;
@@ -129,7 +182,6 @@
             border-bottom: 1px solid #eee;
         }
 
-        /* Queue container styles for modernization */
         .queue-container {
             display: flex;
             flex-direction: column;
@@ -141,12 +193,12 @@
         }
 
         .job-card {
-            background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+            background: rgba(240, 244, 255, 0.9);
             padding: 20px;
             border-radius: 16px; 
             border: 2px solid rgba(102, 126, 234, 0.2);
             display: grid;
-            grid-template-columns: 1fr 150px 150px; /* File details | Format Select | Actions */
+            grid-template-columns: 1fr 150px 150px;
             gap: 20px;
             align-items: center;
             transition: all 0.3s ease;
@@ -348,7 +400,6 @@
             margin-right: auto;
         }
         
-        /* Updated: Banner sizing to accommodate 800px image */
         .footer-promo {
             margin: 32px auto 24px auto;
             max-width: 800px;
@@ -371,7 +422,6 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         
-        /* Updated: Modal promo image sizing */
         .modal-sponsor img {
             width: 100%;
             max-width: 200px;
@@ -457,12 +507,20 @@
     </style>
 </head>
 <body>
+    <nav class="nav-bar">
+        <ul class="nav-links">
+            <li class="nav-link"><a href="https://yourdsgn.pro/" target="_blank">URL Shortener</a></li>
+            <li class="nav-link"><a href="https://alfredwebdesign.com/" target="_blank">Website Design</a></li>
+            <li class="nav-link"><a href="https://www.alfredwebdesign.com/#apparel" target="_blank">Apparel Printing</a></li>
+        </ul>
+    </nav>
+    
     <div class="container">
         <h1>convert.yourdsgn.pro</h1>
-        <p class="tagline">100+ File Format Conversions - No Sign Up Required ✨</p>
+        <p class="tagline">100+ File Format Conversions - Powered by Docker 🚀</p>
         
         <div class="info-box">
-            <p>Convert images, documents, audio, video, and more with 100+ supported formats! All conversions happen securely in your browser - your files never leave your device. Fast, private, and completely free forever.</p>
+            <p>Convert images, documents (PDF/DOCX), audio, and video with maximum compatibility. Your files are sent to a private server API for processing and deleted immediately afterward.</p>
         </div>
         
         <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
@@ -477,10 +535,12 @@
             <div class="queue-header">Conversion Queue (<span id="queueCount">0</span> files)</div>
             
             <div class="queue-container" id="queueContainer">
-                </div>
+                <!-- Job Cards will be dynamically added here -->
+            </div>
             
             <div class="error" id="error"></div>
 
+            <!-- Global Controls -->
             <button class="btn btn-primary btn-start-conversion" id="startConversionBtn" onclick="startConversion()">
                 Start Conversion
             </button>
@@ -495,6 +555,7 @@
         </div>
     </div>
 
+    <!-- Ad Space -->
     <div class="ad-space">
         <ins class="adsbygoogle"
              style="display:block"
@@ -507,6 +568,7 @@
         </script>
     </div>
 
+    <!-- New: Donate Promo Image -->
     <div class="footer-promo">
         <a href="https://buymeacoffee.com/yourdsgnpro" target="_blank">
             <img src="/donate-convert.jpg" alt="Support convert.yourdsgn.pro with a donation">
@@ -528,37 +590,41 @@
     </div>
 
     <script>
-        // Updated: PDF output removed from document to prevent file corruption
+        // *** IMPORTANT: SET YOUR SERVER ENDPOINT HERE ***
+        // Using the Cloudflare Tunnel domain requested by the user.
+        const CONVERSION_API_ENDPOINT = 'https://cnvt.yourdsgn.pro/convert';
+
+        // NOTE: Format list is updated to match the server-side FFmpeg and LibreOffice capability
         const formatSupport = {
             image: {
                 icon: '🖼️',
-                input: ['png', 'jpeg', 'jpg', 'webp', 'gif', 'svg', 'jxl', 'avif', 'heic', 'heif', 'ico', 'bmp', 'cur', 'ani', 'nef', 'cr2', 'hdr', 'jpe', 'mat', 'pbm', 'pfm', 'pgm', 'pnm', 'ppm', 'tiff', 'jfif', 'eps', 'psd', 'arw', 'tif', 'dng', 'xcf', 'rw2', 'raf', 'orf', 'pef', 'mos', 'raw', 'dcr', 'crw', 'cr3', '3fr', 'erf', 'mrw', 'mef', 'nrw', 'srw', 'sr2', 'srf', 'a', 'aai', 'ai', 'art', 'avs', 'b', 'bgr', 'bgra', 'bgro', 'bmp2', 'bmp3', 'brf', 'cal', 'cals', 'cin', 'cip', 'cmyk', 'cmyka', 'dcx', 'dds', 'dpx', 'dxt1', 'dxt5', 'epdf', 'epi', 'eps2', 'eps3', 'epsf', 'epsi', 'ept', 'ept2', 'ept3', 'exr', 'farbfeld', 'fax', 'ff', 'fit', 'fits', 'fl32', 'fts', 'ftxt', 'g', 'g3', 'g4', 'gif87', 'gray', 'graya', 'group4', 'hrz', 'icb', 'icon', 'info', 'ipl', 'isobrl', 'isobrl6', 'j2c', 'j2k', 'jng', 'jp2', 'jpc', 'jpm', 'jps', 'map', 'miff', 'mng', 'mono', 'mtv', 'o', 'otb', 'pal', 'palm', 'pam', 'pcd', 'pcds', 'pcl', 'pct', 'pcx', 'pdb', 'pgx', 'phm', 'picon', 'pict', 'pjpeg', 'png00', 'png24', 'png32', 'png48', 'png64', 'png8', 'ps', 'ps1', 'ps2', 'ps3', 'psb', 'ptif', 'qoi', 'r', 'ras', 'rgb', 'rgba', 'rgbo', 'rgf', 'sgi', 'six', 'sixel', 'sparse-color', 'strimg', 'sun', 'svgz', 'tga', 'tiff64', 'ubrl', 'ubrl6', 'uil', 'uyvy', 'vda', 'vicar', 'viff', 'vips', 'vst', 'wbmp', 'wpg', 'xbm', 'xpm', 'xv', 'ycbcr', 'ycbcra', 'yuv'],
-                output: ['jpg', 'png', 'webp', 'gif', 'bmp', 'ico']
+                input: ['png', 'jpeg', 'jpg', 'webp', 'gif', 'svg', 'tiff', 'ico', 'bmp', 'psd', 'raw', 'heic'],
+                output: ['jpg', 'png', 'webp', 'gif', 'bmp', 'ico', 'tiff', 'pdf']
             },
             document: {
                 icon: '📄',
-                input: ['txt', 'md', 'html', 'htm', 'json', 'csv', 'xml', 'rtf', 'docx', 'doc', 'rst', 'epub', 'odt', 'docbook', 'tsv', 'pdf'],
-                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf'] // PDF OUTPUT REMOVED
+                input: ['txt', 'md', 'html', 'htm', 'json', 'csv', 'xml', 'rtf', 'docx', 'doc', 'odt', 'pdf', 'epub', 'rst'],
+                output: ['txt', 'md', 'html', 'json', 'csv', 'xml', 'rtf', 'pdf', 'docx', 'odt']
             },
             audio: {
                 icon: '🎵',
-                input: ['mp3', 'wav', 'flac', 'ogg', 'mogg', 'oga', 'opus', 'aac', 'alac', 'm4a', 'caf', 'wma', 'amr', 'ac3', 'aiff', 'aifc', 'aif', 'mp1', 'mp2', 'mpc', 'dsd', 'dsf', 'dff', 'mqa', 'au', 'm4b', 'voc', 'weba', 'mkv', 'mp4', 'avi', 'mov', 'webm', 'ts', 'mts', 'm2ts', 'wmv', 'mpg', 'mpeg', 'flv', 'f4v', 'vob', 'm4v', '3gp', '3g2', 'mxf', 'ogv', 'rm', 'rmvb', 'divx'],
-                output: ['mp3', 'wav', 'ogg', 'webm']
+                input: ['mp3', 'wav', 'flac', 'ogg', 'm4a', 'aac', 'wma', 'aiff', 'mkv', 'mp4', 'avi'],
+                output: ['mp3', 'wav', 'ogg', 'flac', 'aac']
             },
             video: {
                 icon: '🎬',
-                input: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'mpeg', 'mpg'],
-                output: ['mp4', 'webm', 'avi', 'gif']
+                input: ['mp4', 'webm', 'avi', 'mov', 'mkv', 'flv', 'wmv', 'mpeg', 'mpg', '3gp'],
+                output: ['mp4', 'webm', 'avi', 'gif', 'mp3']
             },
             archive: {
                 icon: '📦',
                 input: ['zip', 'rar', 'tar', 'gz', '7z', 'targz', 'bzip2'],
-                output: ['zip']
+                output: ['zip'] 
             },
             spreadsheet: {
                 icon: '📊',
                 input: ['xlsx', 'xls', 'csv', 'ods'],
-                output: ['csv', 'json', 'html']
+                output: ['csv', 'json', 'html', 'pdf', 'xlsx']
             }
         };
 
@@ -575,7 +641,7 @@
         const queueCount = document.getElementById('queueCount');
         let jobIdCounter = 0;
 
-        // Setup drag and drop (remains mostly the same)
+        // Setup drag and drop
         uploadZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             uploadZone.classList.add('dragging');
@@ -599,7 +665,6 @@
             
             if (files.length === 0) return;
 
-            // Clear previous results if any
             if (conversionQueue.length > 0) resetConverter(); 
             
             converterApp.style.display = 'block';
@@ -616,7 +681,7 @@
                         fileType: fileType,
                         sourceExt: ext,
                         selectedFormat: null,
-                        status: 'pending', // pending, converting, complete, error
+                        status: 'pending',
                         convertedBlob: null,
                         element: createJobCard(jobId, file, fileType, ext)
                     };
@@ -669,7 +734,6 @@
                 <div class="job-status" id="${jobId}-status">Pending</div>
             `;
             
-            // Attach event listener for format selection
             card.querySelector(`#${jobId}-select`).addEventListener('change', (e) => {
                 const job = conversionQueue.find(j => j.id === jobId);
                 if (job) job.selectedFormat = e.target.value;
@@ -725,7 +789,6 @@
             const allComplete = conversionQueue.length > 0 && conversionQueue.every(j => j.status === 'complete' || j.status === 'error');
             const hasConvertedFiles = conversionQueue.some(j => j.status === 'complete');
             
-            // Show Download All only if all jobs are finished (complete or error) AND at least one successfully completed
             downloadAllBtn.style.display = allComplete && hasConvertedFiles ? 'block' : 'none';
         }
 
@@ -749,7 +812,6 @@
             updateGlobalControls();
         }
 
-        // Conversion Queue Handler
         async function startConversion() {
             if (isConverting) return;
             isConverting = true;
@@ -759,7 +821,6 @@
             downloadAllBtn.style.display = 'none';
 
             for (const job of conversionQueue) {
-                // Skip already completed or errored jobs
                 if (job.status === 'complete' || job.status === 'error') continue;
                 
                 if (!job.selectedFormat) {
@@ -779,25 +840,39 @@
         async function processJob(job) {
             updateJobStatus(job.id, 'converting');
             updateJobProgress(job.id, 10);
-
+            
             try {
-                let blob;
+                const formData = new FormData();
+                formData.append('file', job.file);
+                formData.append('target_format', job.selectedFormat);
+                
                 updateJobProgress(job.id, 30);
+                
+                const response = await fetch(CONVERSION_API_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                updateJobProgress(job.id, 70);
 
-                if (job.fileType === 'image') {
-                    blob = await convertImage(job.file, job.selectedFormat);
-                } else if (job.fileType === 'document' || job.fileType === 'spreadsheet') {
-                    blob = await convertDocument(job.file, job.selectedFormat, job.sourceExt);
-                } else if (job.fileType === 'audio') {
-                    blob = await convertAudio(job.file, job.selectedFormat);
-                } else if (job.fileType === 'video') {
-                    blob = await convertVideo(job.file, job.selectedFormat);
-                } else {
-                    throw new Error('Conversion type not supported.');
+                if (!response.ok) {
+                    let errorDetails = `Server error (${response.status}).`;
+                    try {
+                        const errorText = await response.text();
+                        // Attempt to parse JSON first, fallback to raw text
+                        const errorJson = JSON.parse(errorText);
+                        errorDetails = errorJson.error || errorDetails;
+                    } catch {
+                        // Use generic error if response isn't clean JSON
+                        errorDetails = `Conversion failed. Check server logs for details.`;
+                    }
+                    throw new Error(errorDetails);
                 }
+
+                const convertedBlob = await response.blob();
                 
                 updateJobProgress(job.id, 90);
-                job.convertedBlob = blob;
+                job.convertedBlob = convertedBlob;
                 
                 setTimeout(() => {
                     updateJobProgress(job.id, 100);
@@ -806,207 +881,8 @@
                 
             } catch (err) {
                 updateJobProgress(job.id, 0);
-                updateJobStatus(job.id, 'error', err.message || 'Conversion failed');
+                updateJobStatus(job.id, 'error', err.message || 'Conversion failed by API.');
             }
-        }
-        
-        async function convertImage(file, targetFormat) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        const ctx = canvas.getContext('2d');
-                        
-                        if (targetFormat === 'jpg' || targetFormat === 'jpeg') {
-                            ctx.fillStyle = 'white';
-                            ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        }
-                        
-                        ctx.drawImage(img, 0, 0);
-                        
-                        const mimeType = targetFormat === 'jpg' ? 'image/jpeg' : `image/${targetFormat}`;
-                        canvas.toBlob((blob) => {
-                            if (blob) {
-                                resolve(blob);
-                            } else {
-                                reject(new Error('Image conversion failed'));
-                            }
-                        }, mimeType, 0.95);
-                    };
-                    img.onerror = () => reject(new Error('Failed to load image'));
-                    img.src = e.target.result;
-                };
-                reader.onerror = () => reject(new Error('Failed to read file'));
-                reader.readAsDataURL(file);
-            });
-        }
-
-        async function convertDocument(file, targetFormat, sourceExt) {
-            // FIX: Immediately stop PDF input to prevent browser freeze
-            if (sourceExt === 'pdf') {
-                 throw new Error(`PDF parsing is not supported for client-side conversion without a specialized library (e.g., pdf.js).`);
-            }
-            
-            if (['docx', 'doc', 'odt', 'epub'].includes(sourceExt)) {
-                 throw new Error(`Conversion for .${sourceExt} to .${targetFormat} requires a server or a complex library.`);
-            }
-            
-            const text = await file.text();
-            let content = text;
-            
-            // JSON to CSV
-            if (sourceExt === 'json' && targetFormat === 'csv') {
-                try {
-                    const json = JSON.parse(text);
-                    const array = Array.isArray(json) ? json : [json];
-                    if (array.length > 0) {
-                        const headers = Object.keys(array[0]);
-                        const csv = [
-                            headers.join(','),
-                            ...array.map(row => headers.map(h => {
-                                const val = row[h] || '';
-                                return typeof val === 'string' && val.includes(',') ? `"${val}"` : val;
-                            }).join(','))
-                        ].join('\n');
-                        content = csv;
-                    }
-                } catch (e) {
-                    throw new Error('Invalid JSON format');
-                }
-            }
-            // CSV to JSON
-            else if (sourceExt === 'csv' && targetFormat === 'json') {
-                const lines = text.trim().split('\n');
-                if (lines.length > 1) {
-                    const headers = lines[0].split(',').map(h => h.trim());
-                    const json = lines.slice(1).map(line => {
-                        const values = line.split(',');
-                        return headers.reduce((obj, header, i) => {
-                            obj[header] = values[i]?.trim() || '';
-                            return obj;
-                        }, {});
-                    });
-                    content = JSON.stringify(json, null, 2);
-                }
-            }
-            // Markdown to HTML
-            else if (sourceExt === 'md' && targetFormat === 'html') {
-                content = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Converted Document</title><style>body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:20px;line-height:1.6;}pre{background:#f4f4f4;padding:10px;border-radius:4px;overflow-x:auto;}code{background:#f4f4f4;padding:2px 6px;border-radius:3px;}</style></head><body><pre>${text}</pre></body></html>`;
-            }
-            // CSV to HTML Table
-            else if (sourceExt === 'csv' && targetFormat === 'html') {
-                const lines = text.trim().split('\n');
-                const headers = lines[0].split(',');
-                const rows = lines.slice(1);
-                
-                let tableHtml = '<table border="1" style="border-collapse: collapse; width: 100%;"><thead><tr>';
-                headers.forEach(h => {
-                    tableHtml += `<th style="padding: 8px; background: #f4f4f4;">${h}</th>`;
-                });
-                tableHtml += '</tr></thead><tbody>';
-                rows.forEach(row => {
-                    const cells = row.split(',');
-                    tableHtml += '<tr>';
-                    cells.forEach(cell => {
-                        tableHtml += `<td style="padding: 8px;">${cell}</td>`;
-                    });
-                    tableHtml += '</tr>';
-                });
-                tableHtml += '</tbody></table>';
-                
-                content = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>CSV Table</title><style>body{font-family:Arial,sans-serif;padding:20px;}table{border-collapse:collapse;width:100%;}th,td{border:1px solid #ddd;padding:8px;text-align:left;}th{background:#667eea;color:white;}</style></head><body>${tableHtml}</body></html>`;
-            }
-            // Default: no conversion, just re-wrap
-            
-            return new Blob([content], { type: 'text/plain' });
-        }
-
-        async function convertAudio(file, targetFormat) {
-            if (targetFormat === 'wav') {
-                try {
-                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                    const arrayBuffer = await file.arrayBuffer();
-                    const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-                    
-                    const wav = audioBufferToWav(audioBuffer);
-                    return new Blob([wav], { type: 'audio/wav' });
-                } catch (err) {
-                    throw new Error('Audio conversion requires a supported browser and supported input format.');
-                }
-            }
-            throw new Error(`Audio conversion to .${targetFormat} requires a specialized WASM library (e.g., FFmpeg-wasm).`);
-        }
-        
-        function audioBufferToWav(buffer) {
-            const length = buffer.length * buffer.numberOfChannels * 2 + 44;
-            const arrayBuffer = new ArrayBuffer(length);
-            const view = new DataView(arrayBuffer);
-            let pos = 0;
-
-            const setUint16 = (data) => { view.setUint16(pos, data, true); pos += 2; };
-            const setUint32 = (data) => { view.setUint32(pos, data, true); pos += 4; };
-
-            setUint32(0x46464952); // "RIFF"
-            setUint32(length - 8);
-            setUint32(0x45564157); // "WAVE"
-            setUint32(0x20746d66); // "fmt "
-            setUint32(16);
-            setUint16(1);
-            setUint16(buffer.numberOfChannels);
-            setUint32(buffer.sampleRate);
-            setUint32(buffer.sampleRate * 2 * buffer.numberOfChannels);
-            setUint16(buffer.numberOfChannels * 2);
-            setUint16(16);
-            setUint32(0x61746164); // "data"
-            setUint32(length - pos - 4);
-
-            const channels = [];
-            for (let i = 0; i < buffer.numberOfChannels; i++) {
-                channels.push(buffer.getChannelData(i));
-            }
-
-            let offset = 0;
-            while (pos < length) {
-                for (let i = 0; i < buffer.numberOfChannels; i++) {
-                    let sample = Math.max(-1, Math.min(1, channels[i][offset]));
-                    sample = sample < 0 ? sample * 0x8000 : sample * 0x7FFF;
-                    view.setInt16(pos, sample, true);
-                    pos += 2;
-                }
-                offset++;
-            }
-
-            return arrayBuffer;
-        }
-
-        async function convertVideo(file, targetFormat) {
-            if (targetFormat === 'gif') {
-                return new Promise((resolve, reject) => {
-                    const video = document.createElement('video');
-                    video.preload = 'metadata';
-                    video.onloadedmetadata = () => {
-                        video.currentTime = Math.min(1, video.duration / 2);
-                    };
-                    video.onseeked = () => {
-                        const canvas = document.createElement('canvas');
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
-                        const ctx = canvas.getContext('2d');
-                        ctx.drawImage(video, 0, 0);
-                        canvas.toBlob((blob) => {
-                            if (blob) resolve(blob);
-                            else reject(new Error('Video frame extraction failed'));
-                        }, 'image/gif');
-                    };
-                    video.onerror = () => reject(new Error('Failed to load video'));
-                    video.src = URL.createObjectURL(file);
-                });
-            }
-            throw new Error(`Video conversion to .${targetFormat} requires a specialized WASM library (e.g., FFmpeg-wasm).`);
         }
         
         function downloadFile(originalFileName, targetFormat, blob) {
